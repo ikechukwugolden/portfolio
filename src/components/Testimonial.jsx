@@ -1,12 +1,13 @@
 import React from "react";
 
 const skills = [
-  { name: "HTML", link: "https://your-project-link.com/html" },
-  { name: "CSS", link: "https://your-project-link.com/css" },
-  { name: "JavaScript", link: "https://your-project-link.com/javascript" },
-  { name: "ReactJS", link: "https://your-project-link.com/reactjs" },
-  { name: "Tailwind CSS", link: "https://your-project-link.com/tailwind" },
-  { name: "Git", link: "https://your-project-link.com/git" },
+  { name: "HTML",},
+  { name: "CSS",},
+  { name: "JavaScript",},
+  { name: "ReactJS",  },
+  { name: "Tailwind CSS",},
+  { name: "Git",},
+   { name: "Firebase",},
 ];
 
 const Testimonial = () => {
@@ -38,7 +39,7 @@ const Testimonial = () => {
               href={skill.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-purple-600/20 text-purple-400 px-4 py-2 rounded-full text-sm font-medium hover:bg-purple-500/30 hover:text-white transition transform hover:scale-105"
+              className="bg-purple-600/20 text-purple-400 px-1 py-2  text-sm font-medium hover:bg-purple-500/30 hover:text-white transition transform hover:scale-105"
             >
               {skill.name}
             </a>

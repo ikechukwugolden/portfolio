@@ -23,10 +23,10 @@ const Hero = () => {
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mt-4">
                         <button className="px-6 py-3 rounded-lg font-semibold shadow-lg text-white bg-purple-500 hover:bg-purple-600 transition transform hover:scale-105">
-                            Get Started
+                            Hire me
                         </button>
                         <button className="px-6 py-3 rounded-lg font-semibold shadow-lg border border-white text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition transform hover:scale-105">
-                            Learn More
+                            View Projects
                         </button>
                     </div>
                 </div>
