@@ -7,14 +7,14 @@ const Hero = () => {
             className="w-full h-[90vh] relative flex items-center justify-center bg-cover bg-center transition-colors duration-500"
             style={{ backgroundImage: `url(${heroTechBg})` }}
         >
-            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-transparent"></div>
+            <div className="absolute inset-0 bg-linear-to-br from-black/70 via-black/40 to-transparent"></div>
 
             <div className="relative z-10 flex flex-col md:flex-row items-center w-[90%] max-w-6xl gap-12 md:gap-20">
 
                 <div className="flex flex-col justify-center text-center md:text-left md:w-1/2 gap-6">
                     <h1 className="text-4xl md:text-6xl font-extrabold text-white dark:text-gray-100 drop-shadow-xl leading-tight">
                         Build Modern{" "}
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+                        <span className="bg-clip-text text-transparent bg-linear-to-r from-purple-400 via-pink-500 to-red-500">
                             Web Experiences
                         </span>
                     </h1>

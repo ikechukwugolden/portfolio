@@ -20,7 +20,7 @@ const About = () => {
   ];
 
   return (
-    <section className="w-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-24 px-5 relative overflow-hidden">
+    <section className="w-full bg-linear-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-24 px-5 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
         <div className="absolute -top-20 -left-20 w-64 h-64 bg-purple-500 rounded-full blur-3xl"></div>
@@ -35,9 +35,9 @@ const About = () => {
             GET TO KNOW ME
           </span>
           <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Me</span>
+            About <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-400">Me</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-linear-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
         </div>
 
         <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -45,7 +45,7 @@ const About = () => {
           <div className="lg:w-2/5 flex justify-center">
             <div className="relative w-full max-w-sm">
               {/* Glow Effect */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl blur-xl opacity-30 animate-pulse"></div>
+              <div className="absolute -inset-4 bg-linear-to-r from-purple-500 to-pink-500 rounded-3xl blur-xl opacity-30 animate-pulse"></div>
               
               {/* Image Container - Portrait Aspect Ratio */}
               <div className="relative overflow-hidden rounded-2xl border-4 border-gray-800 shadow-2xl">
@@ -56,8 +56,8 @@ const About = () => {
                   style={{ aspectRatio: "3/4" }}
                 />
                 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent"></div>
+                {/* linear Overlay */}
+                <div className="absolute inset-0 bg-linear-to-t from-gray-900/60 via-transparent to-transparent"></div>
                 
                 {/* Status Badge */}
                 <div className="absolute bottom-4 left-4 bg-gray-900/80 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-700 shadow-lg">
@@ -79,11 +79,11 @@ const About = () => {
             {/* Introduction */}
             <div className="mb-10">
               <div className="inline-flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 bg-linear-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
                   <FaCode className="text-white text-xl" />
                 </div>
                 <h3 className="text-3xl font-bold">
-                  Hello! I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Victor</span>
+                  Hello! I'm <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-400">Victor</span>
                 </h3>
               </div>
               
@@ -130,7 +130,7 @@ const About = () => {
                 {passions.map((passion, index) => (
                   <span 
                     key={index}
-                    className="px-3.5 py-2 bg-gray-800/40 border border-gray-700 rounded-lg text-sm hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-pink-500/20 hover:border-purple-500/50 hover:text-purple-300 transition-all duration-300 cursor-default"
+                    className="px-3.5 py-2 bg-gray-800/40 border border-gray-700 rounded-lg text-sm hover:bg-linear-to-r hover:from-purple-500/20 hover:to-pink-500/20 hover:border-purple-500/50 hover:text-purple-300 transition-all duration-300 cursor-default"
                   >
                     {passion}
                   </span>
@@ -140,8 +140,8 @@ const About = () => {
 
             {/* Vision Box */}
             <div className="relative overflow-hidden rounded-2xl group">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-blue-500/10 group-hover:opacity-80 transition-opacity duration-500"></div>
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-linear-to-r from-purple-500/10 via-pink-500/10 to-blue-500/10 group-hover:opacity-80 transition-opacity duration-500"></div>
+              <div className="absolute -inset-1 bg-linear-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
               <div className="relative bg-gray-800/30 backdrop-blur-sm border border-gray-700 p-6">
                 <div className="flex items-start gap-4">
                   <div className="text-3xl animate-pulse">✨</div>
@@ -162,7 +162,7 @@ const About = () => {
         {/* CTA */}
         <div className="text-center mt-16">
           <div className="inline-flex flex-col sm:flex-row gap-4">
-            <button className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:shadow-2xl hover:shadow-purple-500/30 transform hover:scale-105 transition-all duration-300">
+            <button className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-linear-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:shadow-2xl hover:shadow-purple-500/30 transform hover:scale-105 transition-all duration-300">
               <FaDownload />
               Download Resume
             </button>
@@ -177,7 +177,7 @@ const About = () => {
             <p className="text-gray-400 italic text-lg">
               "Great web experiences are born at the intersection of technical excellence and creative vision."
             </p>
-            <div className="w-16 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mt-4"></div>
+            <div className="w-16 h-0.5 bg-linear-to-r from-purple-500 to-pink-500 mx-auto mt-4"></div>
           </div>
         </div>
       </div>

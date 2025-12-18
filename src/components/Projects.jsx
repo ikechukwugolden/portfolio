@@ -52,14 +52,14 @@ const ProjectCard = ({ project, isFeatured }) => {
   return (
     <div className={`group relative overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-2xl ${
       isFeatured 
-        ? "lg:col-span-2 bg-gradient-to-br from-gray-800 via-gray-900 to-purple-900/20" 
-        : "bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm"
+        ? "lg:col-span-2 bg-linear-to-br from-gray-800 via-gray-900 to-purple-900/20" 
+        : "bg-linear-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm"
     } border border-gray-700 hover:border-purple-500/50`}>
       
       {/* Featured Badge */}
       {isFeatured && (
         <div className="absolute top-4 left-4 z-10">
-          <div className="flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white text-sm font-bold">
+          <div className="flex items-center gap-2 px-3 py-1 bg-linear-to-r from-purple-600 to-pink-600 rounded-full text-white text-sm font-bold">
             <FaStar className="text-yellow-300" /> Featured Project
           </div>
         </div>
@@ -79,8 +79,8 @@ const ProjectCard = ({ project, isFeatured }) => {
           alt={project.title}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-gray-900 via-transparent to-transparent opacity-60"></div>
+        <div className="absolute inset-0 bg-linear-to-r from-purple-500/10 via-transparent to-transparent"></div>
       </div>
 
       {/* Content */}
@@ -125,7 +125,7 @@ const ProjectCard = ({ project, isFeatured }) => {
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-medium hover:from-purple-700 hover:to-purple-800 hover:shadow-lg hover:shadow-purple-500/30 transform hover:scale-105 transition-all duration-300"
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-linear-to-r from-purple-600 to-purple-700 text-white rounded-xl font-medium hover:from-purple-700 hover:to-purple-800 hover:shadow-lg hover:shadow-purple-500/30 transform hover:scale-105 transition-all duration-300"
           >
             <FaExternalLinkAlt /> Live Demo
           </a>
@@ -145,7 +145,7 @@ const ProjectCard = ({ project, isFeatured }) => {
 
 const Projects = () => {
   return (
-    <section className="w-full bg-gradient-to-b from-gray-900 via-gray-900 to-black text-white py-24 px-5 relative overflow-hidden">
+    <section className="w-full bg-linear-to-b from-gray-900 via-gray-900 to-black text-white py-24 px-5 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-5">
         <div className="absolute top-1/4 left-10 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
@@ -159,12 +159,12 @@ const Projects = () => {
             PORTFOLIO SHOWCASE
           </span>
           <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Projects</span>
+            Featured <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-400">Projects</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
             A collection of my recent work, showcasing innovative solutions and modern web technologies.
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-linear-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
         </div>
 
         {/* Featured Project Section */}
@@ -214,7 +214,7 @@ const Projects = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <div className="relative overflow-hidden rounded-2xl p-8 bg-gradient-to-r from-gray-800/50 to-gray-900/50 border border-gray-700">
+          <div className="relative overflow-hidden rounded-2xl p-8 bg-linear-to-r from-gray-800/50 to-gray-900/50 border border-gray-700">
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
             <h3 className="text-2xl font-bold mb-4">Want to see more?</h3>
             <p className="text-gray-400 mb-6 max-w-md mx-auto">
@@ -225,7 +225,7 @@ const Projects = () => {
                 href="https://github.com/ikechukwugolden"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-xl hover:shadow-xl hover:shadow-purple-500/30 transform hover:scale-105 transition-all duration-300"
+                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-linear-to-r from-purple-600 to-pink-600 text-white font-bold rounded-xl hover:shadow-xl hover:shadow-purple-500/30 transform hover:scale-105 transition-all duration-300"
               >
                 <FaGithub className="text-xl" />
                 Explore My GitHub

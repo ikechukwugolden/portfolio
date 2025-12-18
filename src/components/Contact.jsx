@@ -38,21 +38,21 @@ const Contact = () => {
     {
       icon: <FaEnvelope className="text-xl" />,
       title: "Email",
-      info: "victor@example.com",
-      link: "mailto:victor@example.com",
+      info: "ikechukwuv074@gmail.com",
+      link: "mailto:ikechukwuv074@gmail.com",
       color: "from-purple-500 to-pink-500"
     },
     {
       icon: <FaPhone className="text-xl" />,
       title: "Phone",
-      info: "+1 (234) 567-8900",
-      link: "tel:+12345678900",
+      info: "+234 904 581 7261",
+      link: "tel:+2349045817261",
       color: "from-green-500 to-blue-500"
     },
     {
       icon: <FaMapMarkerAlt className="text-xl" />,
       title: "Location",
-      info: "Lagos, Nigeria",
+      info: "Abia, Nigeria",
       link: "https://maps.google.com",
       color: "from-orange-500 to-red-500"
     },
@@ -74,7 +74,7 @@ const Contact = () => {
     {
       icon: <FaGithub />,
       name: "GitHub",
-      url: "https://github.com/yourusername",
+      url: "https://github.com/ikechukwugolden",
       color: "hover:bg-gray-800"
     },
     {
@@ -86,7 +86,7 @@ const Contact = () => {
     {
       icon: <FaWhatsapp />,
       name: "WhatsApp",
-      url: "https://wa.me/1234567890",
+      url: "https://wa.me/2349045817261",
       color: "hover:bg-green-500"
     }
   ];
@@ -94,7 +94,7 @@ const Contact = () => {
   const whatsappMessage = `Hello Victor! I came across your portfolio and I'm interested in discussing a project.`;
 
   return (
-    <section className="w-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-24 px-5 relative overflow-hidden">
+    <section className="w-full bg-linear-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-24 px-5 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
         <div className="absolute top-1/4 -left-20 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
@@ -108,13 +108,13 @@ const Contact = () => {
             GET IN TOUCH
           </span>
           <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">Connect</span>
+            Let's <span className="text-transparent bg-clip-text bg-linear-to-r from-green-400 to-blue-400">Connect</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
             Have a project in mind or want to discuss opportunities? Feel free to reach out!
             I'm always open to new collaborations and interesting conversations.
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-linear-to-r from-green-500 to-blue-500 mx-auto rounded-full"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
@@ -122,7 +122,7 @@ const Contact = () => {
           <div className="lg:col-span-1">
             <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 h-full">
               <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-linear-to-r from-green-500 to-blue-500 rounded-lg flex items-center justify-center">
                   <FaPaperPlane />
                 </div>
                 Contact Information
@@ -138,7 +138,7 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="flex items-start gap-4 p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 group"
                   >
-                    <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${item.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
+                    <div className={`w-12 h-12 rounded-lg bg-linear-to-r ${item.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
                       {item.icon}
                     </div>
                     <div>
@@ -150,7 +150,7 @@ const Contact = () => {
               </div>
 
               {/* WhatsApp Quick Chat - Featured */}
-              <div className="relative overflow-hidden rounded-xl p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/20">
+              <div className="relative overflow-hidden rounded-xl p-6 bg-linear-to-r from-green-500/10 to-blue-500/10 border border-green-500/20">
                 <div className="absolute -top-4 -right-4 w-16 h-16 bg-green-500/20 rounded-full blur-lg"></div>
                 <div className="relative">
                   <div className="flex items-center gap-3 mb-4">
@@ -163,7 +163,7 @@ const Contact = () => {
                     </div>
                   </div>
                   <a
-                    href={`https://wa.me/2348123456789?text=${encodeURIComponent(whatsappMessage)}`}
+                    href="https://wa.me/2349045817261"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-3 bg-green-600 hover:bg-green-700 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105"
@@ -201,7 +201,7 @@ const Contact = () => {
           <div className="lg:col-span-2">
             <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 h-full">
               <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-linear-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
                   <FaEnvelope />
                 </div>
                 Send Me a Message
@@ -263,7 +263,7 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold rounded-xl hover:shadow-xl hover:shadow-purple-500/30 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3"
+                  className="w-full py-4 bg-linear-to-r from-purple-600 to-pink-600 text-white font-bold rounded-xl hover:shadow-xl hover:shadow-purple-500/30 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3"
                 >
                   <FaPaperPlane /> Send Message
                 </button>
@@ -291,7 +291,7 @@ const Contact = () => {
         {/* WhatsApp Floating Button for Mobile */}
         <div className="fixed bottom-6 right-6 z-50 lg:hidden">
           <a
-            href={`https://wa.me/2348123456789?text=${encodeURIComponent(whatsappMessage)}`}
+            href="https://wa.me/2349045817261"
             target="_blank"
             rel="noopener noreferrer"
             className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center shadow-2xl hover:shadow-green-500/50 hover:scale-110 transition-all duration-300 animate-bounce"
@@ -311,10 +311,10 @@ const Contact = () => {
           <div className="mt-8">
             <p className="text-gray-400 mb-4">Prefer a quick conversation?</p>
             <a
-              href={`https://wa.me/2348123456789?text=${encodeURIComponent(whatsappMessage)}`}
+              href="https://wa.me/2349045817261"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white font-bold rounded-xl hover:shadow-xl hover:shadow-green-500/30 transform hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-green-600 to-green-700 text-white font-bold rounded-xl hover:shadow-xl hover:shadow-green-500/30 transform hover:scale-105 transition-all duration-300"
             >
               <FaWhatsapp className="text-2xl" />
               Start WhatsApp Chat Now
