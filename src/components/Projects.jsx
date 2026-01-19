@@ -16,7 +16,7 @@ const projectsData = [
       "Built using Firebase Authentication, Firestore database, and a modern React dashboard UI.",
     tech: ["React", "Tailwind CSS", "JavaScript", "Firebase"],
     image: image3,
-    demo: "https://your-attendance-app.vercel.app/login",
+    demo: "https://attendance-website-ul.netlify.app/",
     github: "https://github.com/ikechukwugolden",
     featured: true,
     type: "Full Stack",
