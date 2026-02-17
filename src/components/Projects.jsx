@@ -7,7 +7,7 @@ import image1 from "../assets/image1.png";
 import one from "../assets/one.png";
 import two from "../assets/two.webp";
 import image2 from "../assets/image.png";
-import image3 from "../assets/Screenshot 2026-01-28 123821.png";
+import image3 from "../assets/Screenshot.png";
 
 const projectsData = [
   {
