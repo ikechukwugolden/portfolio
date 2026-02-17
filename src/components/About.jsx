@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import victor1 from "../assets/chat.png"; 
+import victor1 from "../assets/CHAT.png"; 
 import { FaReact, FaCode, FaLightbulb, FaRocket, FaDownload, FaPaperPlane, FaCheckCircle, FaNodeJs, FaDatabase, FaMobile } from "react-icons/fa";
 import { SiTailwindcss, SiFramer, SiJavascript, SiFirebase } from "react-icons/si";
 
