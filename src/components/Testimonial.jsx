@@ -1,50 +1,113 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaGitAlt } from "react-icons/fa";
+import { SiTailwindcss, SiFirebase } from "react-icons/si";
 
 const skills = [
-  { name: "HTML",},
-  { name: "CSS",},
-  { name: "JavaScript",},
-  { name: "ReactJS",  },
-  { name: "Tailwind CSS",},
-  { name: "Git",},
-   { name: "Firebase",},
+  { name: "HTML5", icon: <FaHtml5 />, color: "text-orange-500" },
+  { name: "CSS3", icon: <FaCss3Alt />, color: "text-blue-500" },
+  { name: "JavaScript", icon: <FaJs />, color: "text-yellow-400" },
+  { name: "ReactJS", icon: <FaReact />, color: "text-cyan-400" },
+  { name: "Tailwind", icon: <SiTailwindcss />, color: "text-sky-400" },
+  { name: "Git", icon: <FaGitAlt />, color: "text-red-500" },
+  { name: "Firebase", icon: <SiFirebase />, color: "text-amber-500" },
 ];
 
 const Testimonial = () => {
   return (
-    <section className="w-full bg-gray-900 text-white py-20 px-5">
-      <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-4xl font-extrabold mb-8">My Journey & Vision</h2>
+    <section className="w-full bg-[#030712] text-white py-32 px-5 relative overflow-hidden">
+      {/* 🟢 Background Decoration */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-purple-600/5 rounded-full blur-[120px] -z-0"></div>
 
-        <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8">
-          "I started my web development journey with the fundamentals of HTML, mastering the building blocks of the web. 
-          I then progressed to CSS, creating responsive and visually appealing designs, and enhanced my skills with JavaScript to bring interactivity to websites. 
-          Over time, I embraced modern frameworks like ReactJS, building dynamic, component-based applications that are scalable and maintainable."
-        </p>
+      <div className="max-w-5xl mx-auto relative z-10">
+        
+        {/* Section Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <div className="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">Evolution</span>
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter italic">
+            JOURNEY <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">&</span> VISION
+          </h2>
+        </motion.div>
 
-        <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8">
-          Along the way, I have gained hands-on experience with Tailwind CSS for rapid UI design, Git for version control, and best practices for clean, semantic code. 
-          I am passionate about creating intuitive and beautiful web experiences that not only function seamlessly but also delight users.
-        </p>
+        {/* Narrative Content */}
+        <div className="space-y-12 mb-20 text-center md:text-left">
+          <motion.p 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-xl md:text-2xl text-gray-400 leading-relaxed font-medium"
+          >
+            <span className="text-white font-black italic">"</span> I started my journey with the building blocks of the web. What began as simple HTML tags evolved into a deep fascination with <span className="text-white">responsive design</span> and the logical complexities of <span className="text-white">JavaScript</span>.
+          </motion.p>
 
-        <p className="text-lg md:text-xl text-gray-300 font-semibold mb-10">
-          My vision is to continue evolving as a full-stack web developer, combining creativity and technical skills to build modern, accessible, and high-performing web applications that make a real impact.
-        </p>
+          <motion.p 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-xl md:text-2xl text-gray-400 leading-relaxed font-medium"
+          >
+            Embracing <span className="text-purple-400">ReactJS</span> changed everything. It allowed me to move from building pages to architecting dynamic <span className="text-white underline decoration-purple-500 underline-offset-8">experiences</span> that are as scalable as they are beautiful.
+          </motion.p>
 
-        {/* Skills Section as Grid with Hover Effects */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4 mt-6">
-          {skills.map((skill) => (
-            <a
-              key={skill.name}
-              href={skill.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-purple-600/20 text-purple-400 px-1 py-2  text-sm font-medium hover:bg-purple-500/30 hover:text-white transition transform hover:scale-105"
-            >
-              {skill.name}
-            </a>
-          ))}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="p-8 bg-white/5 border border-white/10 rounded-[2.5rem] backdrop-blur-sm"
+          >
+            <p className="text-lg md:text-xl text-gray-300 font-bold italic tracking-tight">
+              My vision is to bridge the gap between imagination and reality, creating high-performing full-stack applications that don't just solve problems—they leave a lasting digital impact.
+            </p>
+          </motion.div>
         </div>
+
+        {/* 🟢 Refined Skills Arsenal */}
+        <div className="relative">
+            <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                <div className="w-full border-t border-white/5"></div>
+            </div>
+            <div className="relative flex justify-center mb-10">
+                <span className="bg-[#030712] px-6 text-[10px] font-black uppercase tracking-[0.4em] text-gray-600">Core Arsenal</span>
+            </div>
+        </div>
+
+        <motion.div 
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: { staggerChildren: 0.1 }
+            }
+          }}
+          className="flex flex-wrap justify-center gap-4"
+        >
+          {skills.map((skill) => (
+            <motion.div
+              key={skill.name}
+              variants={{
+                hidden: { opacity: 0, scale: 0.8 },
+                show: { opacity: 1, scale: 1 }
+              }}
+              whileHover={{ y: -5, backgroundColor: "rgba(168, 85, 247, 0.1)" }}
+              className="flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-2xl transition-colors cursor-default"
+            >
+              <span className={`text-xl ${skill.color}`}>{skill.icon}</span>
+              <span className="text-xs font-black uppercase tracking-widest text-gray-300">{skill.name}</span>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

@@ -1,46 +1,142 @@
-import victor from "../assets/victor-5.jpeg";
-import heroTechBg from "../assets/heroTechBg.jpg"; // <-- new modern background
+import React from "react";
+import { motion } from "framer-motion";
+import victor from "../assets/chatone.png";
+import heroTechBg from "../assets/heroTechBg.jpg";
 
 const Hero = () => {
     return (
         <section
-            className="w-full h-[90vh] relative flex items-center justify-center bg-cover bg-center transition-colors duration-500"
-            style={{ backgroundImage: `url(${heroTechBg})` }}
+            id="home"
+            className="w-full h-screen relative flex items-center justify-center bg-cover bg-center overflow-hidden transition-all duration-500 bg-white dark:bg-[#030712]"
+            style={{ 
+                // Light mode: no background image (clean white) 
+                // Dark mode: your tech image background
+                backgroundImage: `var(--hero-bg)`,
+            }}
         >
-            <div className="absolute inset-0 bg-linear-to-br from-black/70 via-black/40 to-transparent"></div>
+            {/* Inline Style Logic for Tailwind v4/Standard CSS Variables */}
+            <style dangerouslySetInnerHTML={{ __html: `
+                :root { --hero-bg: none; }
+                .dark { --hero-bg: url(${heroTechBg}); }
+            `}} />
 
-            <div className="relative z-10 flex flex-col md:flex-row items-center w-[90%] max-w-6xl gap-12 md:gap-20">
+            {/* 🟢 OVERLAY: Swaps from a soft studio light to your deep dark gradient */}
+            <div className="absolute inset-0 transition-opacity duration-500 
+                bg-gradient-to-br from-purple-50 via-white to-white opacity-100 dark:opacity-0"></div>
+            
+            <div className="absolute inset-0 transition-opacity duration-500 
+                bg-gradient-to-br from-[#030712] via-[#030712]/80 to-transparent opacity-0 dark:opacity-100"></div>
 
-                <div className="flex flex-col justify-center text-center md:text-left md:w-1/2 gap-6">
-                    <h1 className="text-4xl md:text-6xl font-extrabold text-white dark:text-gray-100 drop-shadow-xl leading-tight">
-                        Build Modern{" "}
-                        <span className="bg-clip-text text-transparent bg-linear-to-r from-purple-400 via-pink-500 to-red-500">
-                            Web Experiences
+            {/* 🟢 Animated Ambient Light (Purple Glow) */}
+            <motion.div 
+                animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0.1, 0.2, 0.1] 
+                }}
+                transition={{ duration: 8, repeat: Infinity }}
+                className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600 rounded-full blur-[120px] z-0" 
+            />
+
+            <div className="relative z-10 flex flex-col md:flex-row items-center w-[90%] max-w-7xl gap-12 md:gap-20">
+                
+                {/* Left Side: Content */}
+                <motion.div 
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="flex flex-col justify-center text-center md:text-left md:w-3/5 gap-8"
+                >
+                    <div className="inline-flex items-center self-center md:self-start gap-2 px-3 py-1 rounded-full 
+                        bg-black/5 border border-black/10 dark:bg-white/5 dark:border-white/10 backdrop-blur-md">
+                        <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-600 dark:text-gray-300">
+                            Available for new projects
+                        </span>
+                    </div>
+
+                    <h1 className="text-5xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
+                        CRAFTING <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 dark:from-purple-400 dark:via-pink-500 dark:to-blue-500">
+                            DIGITAL SOULS
                         </span>
                     </h1>
-                    <p className="text-white/90 dark:text-gray-300 text-lg md:text-xl max-w-md drop-shadow-md">
-                        Create stunning interfaces with React, Tailwind CSS, and effortless dark/light mode support. Perfect for portfolios, startups, and SaaS products.
+
+                    <p className="text-gray-500 dark:text-gray-400 text-lg md:text-xl max-w-xl leading-relaxed font-medium">
+                        I am Victor, a Full-Stack Developer specializing in high-performance web experiences. 
+                        Turning complex logic into <span className="text-purple-600 dark:text-white italic">effortless beauty.</span>
                     </p>
-                    <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4 mt-4">
-                        <button className="px-6 py-3 rounded-lg font-semibold shadow-lg text-white bg-purple-500 hover:bg-purple-600 transition transform hover:scale-105">
-                            Hire me
-                        </button>
-                        <button className="px-6 py-3 rounded-lg font-semibold shadow-lg border border-white text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition transform hover:scale-105">
-                            View Projects
-                        </button>
+
+                    <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-5 mt-4">
+                        <motion.button 
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] shadow-2xl text-white bg-purple-600 hover:bg-purple-500 transition-all shadow-purple-500/20"
+                        >
+                            Hire the architect
+                        </motion.button>
+                        
+                        <motion.button 
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] border border-black/10 text-slate-900 bg-transparent hover:bg-black/5 dark:border-white/10 dark:text-white dark:bg-white/5 dark:hover:bg-white/10 backdrop-blur-md transition-all"
+                        >
+                            View Portfolio
+                        </motion.button>
                     </div>
-                </div>
+                </motion.div>
 
+                {/* Right Side: Image with Floating Effect */}
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: 0.2 }}
+                    className="md:w-2/5 flex justify-center md:justify-end relative"
+                >
+                    {/* Background Decorative Rings */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <motion.div 
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                            className="w-[120%] h-[120%] border border-black/5 dark:border-white/5 rounded-full"
+                        />
+                    </div>
 
-                <div className="md:w-1/2 flex justify-center md:justify-end">
-                    <img
-                        src={victor}
-                        alt="logo"
-                        className="hidden md:block w-64 h-auto md:w-80 animate-bounce-slow drop-shadow-2xl rounded-xl"
-                    />
-                </div>
-
+                    <div className="relative group">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-[2.5rem] blur opacity-20 dark:opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                        <motion.div
+                            animate={{ y: [0, -20, 0] }}
+                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                            <img
+                                src={victor}
+                                alt="Victor"
+                                className="w-64 h-80 md:w-80 md:h-[450px] object-cover rounded-[2rem] border-2 border-black/10 dark:border-white/10 shadow-2xl grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
+                            />
+                        </motion.div>
+                        
+                        {/* Floating Experience Badge */}
+                        <motion.div 
+                            animate={{ y: [0, 10, 0] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                            className="absolute -bottom-6 -right-6 bg-white/90 dark:bg-black/80 backdrop-blur-2xl border border-black/10 dark:border-white/10 p-6 rounded-2xl shadow-2xl"
+                        >
+                            <p className="text-3xl font-black text-purple-600 dark:text-purple-500">2+</p>
+                            <p className="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">Years Exp.</p>
+                        </motion.div>
+                    </div>
+                </motion.div>
             </div>
+
+            {/* 🟢 Scroll Indicator */}
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5 }}
+                className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            >
+                <span className="text-[8px] font-black uppercase tracking-[0.4em] text-gray-400 dark:text-gray-500">Scroll</span>
+                <div className="w-[1px] h-12 bg-gradient-to-b from-purple-500 to-transparent"></div>
+            </motion.div>
         </section>
     );
 };

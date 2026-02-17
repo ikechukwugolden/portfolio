@@ -1,92 +1,131 @@
 import { useState, useEffect } from "react";
-import { FaWhatsapp } from "react-icons/fa"; // WhatsApp icon
-import { Link } from "react-router-dom";
+import { FaWhatsapp, FaSun, FaMoon, FaTimes, FaBars } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  // Check system preference for initial state
+  const [darkMode, setDarkMode] = useState(() => {
+    return document.documentElement.classList.contains("dark") || 
+           localStorage.getItem("theme") === "dark";
+  });
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
-  // Toggle dark mode
+  // Dark Mode Logic
   useEffect(() => {
-    const html = document.documentElement;
-    darkMode ? html.classList.add("dark") : html.classList.remove("dark");
+    const root = window.document.documentElement;
+    if (darkMode) {
+      root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
   }, [darkMode]);
 
-  const whatsappNumber = "2348012345678"; // Replace with your number
-  const whatsappLink = `https://wa.me/${whatsappNumber}`;
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Projects", path: "/projects" },
+    { name: "Contact", path: "/contact" },
+  ];
+
+  const whatsappLink = `https://wa.me/2349045817261`;
 
   return (
-    <header className="fixed top-1 left-1/2 -translate-x-1/2 w-[90%] md:w-[80%] z-50 bg-white/30 dark:bg-black/30 backdrop-blur-md rounded-full border border-white/10 dark:border-gray-700 transition-colors">
-      <div className="h-16 flex items-center justify-between px-6">
-
+    <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[100%] max-w-7xl z-[100]">
+      <div className="bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-[2rem] px-6 h-20 flex items-center justify-between shadow-2xl transition-all duration-500">
+        
         {/* LOGO */}
-        <span className="text-black dark:text-white text-2xl md:text-3xl font-serif tracking-wide cursor-pointer">
-          Ikechukwuvictor
-        </span>
+        <Link to="/" className="group flex items-center gap-2">
+          <div className="w-10 h-10 bg-gradient-to-tr from-purple-600 to-pink-500 rounded-xl flex items-center justify-center text-white font-black group-hover:rotate-12 transition-transform">
+            IV
+          </div>
+          <span className="text-black dark:text-white text-xl font-black tracking-tighter uppercase italic">
+           Ikechkwu Victor<span className="text-purple-500">.</span>
+          </span>
+        </Link>
 
         {/* DESKTOP NAV */}
-        <nav className="hidden md:flex items-center gap-8 font-medium text-white">
-          <Link to="/" className="hover:opacity-70 transition">Home</Link>
-          <Link to="/about" className="hover:opacity-70 transition">About</Link>
-          <Link to="/Services" className="hover:opacity-70 transition">Services</Link>
-          <Link to="/Projects" className="hover:opacity-70 transition">Projects</Link>
-          <Link to="/contact" className="hover:opacity-70 transition">Contact</Link>
+        <nav className="hidden md:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className={`px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition-all ${
+                location.pathname === link.path 
+                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/20" 
+                : "text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
         </nav>
 
         {/* RIGHT ACTIONS */}
-        <div className="flex items-center gap-4">
-          {/* CHAT ME BUTTON */}
-          <a
-            href="https://wa.me/2349045817261"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-md font-semibold shadow-md transition"
-          >
-            <FaWhatsapp />
-            Chat Me
-          </a>
-
+        <div className="flex items-center gap-3">
           {/* DARK MODE TOGGLE */}
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="text-xl"
-            aria-label="Toggle dark mode"
+            className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-yellow-400 hover:scale-110 transition-all border border-transparent dark:border-white/10"
           >
-            {darkMode ? "🌞" : "🌙"}
+            {darkMode ? <FaMoon className="text-purple-600" /> : <FaSun className="text-yellow-400" />}
           </button>
+
+          {/* CHAT ME BUTTON */}
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-2.5 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all shadow-lg shadow-green-500/20"
+          >
+            <FaWhatsapp className="text-base" />
+            Chat
+          </a>
 
           {/* MOBILE MENU TOGGLE */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-2xl text-pink-700"
-            aria-label="Toggle menu"
+            className="md:hidden w-10 h-10 flex items-center justify-center text-black dark:text-white text-xl"
           >
-            {menuOpen ? "✕" : "☰"}
+            {menuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
 
       {/* MOBILE MENU */}
-      {menuOpen && (
-        <div className="md:hidden mt-2 bg-white dark:bg-black/90 text-white rounded-2xl py-6 flex flex-col items-center gap-5 shadow-lg">
-          <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-          <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
-          <Link to="/services" onClick={() => setMenuOpen(false)}>Services</Link>
-          <Link to="/projects" onClick={() => setMenuOpen(false)}>Projects</Link>
-          <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
-
-          {/* HIRE ME BUTTON */}
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-md font-semibold shadow-md transition"
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            className="absolute top-24 left-0 w-full bg-white dark:bg-[#0d0d0d] border border-black/5 dark:border-white/10 rounded-[2.5rem] p-8 flex flex-col items-center gap-6 shadow-2xl md:hidden z-[-1]"
           >
-            <FaWhatsapp />
-            Hire Me
-          </a>
-        </div>
-      )}
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name} 
+                to={link.path} 
+                onClick={() => setMenuOpen(false)}
+                className="text-2xl font-black uppercase tracking-tighter text-black dark:text-white hover:text-purple-500 transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex justify-center items-center gap-3 bg-green-500 text-white py-5 rounded-2xl font-black uppercase tracking-widest"
+            >
+              <FaWhatsapp className="text-xl" /> Let's Talk
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

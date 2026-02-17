@@ -1,183 +1,154 @@
 import React from "react";
-import victor1 from "../assets/victor-5.jpeg"; // Replace with your photo/avatar
-import { FaReact, FaCode, FaLightbulb, FaRocket, FaDownload, FaPaperPlane } from "react-icons/fa";
+import { motion, useScroll, useTransform } from "framer-motion";
+import victor1 from "../assets/chat.png"; 
+import { FaReact, FaCode, FaLightbulb, FaRocket, FaDownload, FaPaperPlane, FaCheckCircle, FaNodeJs, FaDatabase, FaMobile } from "react-icons/fa";
+import { SiTailwindcss, SiFramer, SiJavascript, SiFirebase } from "react-icons/si";
 
 const About = () => {
+  const { scrollYProgress } = useScroll();
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 200]);
+
   const stats = [
-    { number: "2+", label: "Years Experience", icon: <FaCode className="text-purple-400" /> },
-    { number: "50+", label: "Projects Completed", icon: <FaRocket className="text-purple-400" /> },
-    { number: "100%", label: "Client Satisfaction", icon: <FaLightbulb className="text-purple-400" /> },
-    { number: "∞", label: "Passion for Code", icon: <FaReact className="text-purple-400" /> }
+    { number: "2+", label: "Years Experience", icon: <FaCode /> },
+    { number: "50+", label: "Projects", icon: <FaRocket /> },
+    { number: "100%", label: "Satisfaction", icon: <FaLightbulb /> },
+    { number: "∞", label: "Passion", icon: <FaReact /> }
   ];
 
-  const passions = [
-    "Clean Code Architecture",
-    "Responsive Design",
-    "Performance Optimization",
-    "User Experience",
-    "Modern Frameworks",
-    "Continuous Learning"
+  const skills = [
+    { name: "React", icon: <FaReact />, color: "text-blue-400" },
+    { name: "Node.js", icon: <FaNodeJs />, color: "text-green-500" },
+    { name: "Tailwind", icon: <SiTailwindcss />, color: "text-cyan-400" },
+    { name: "Framer", icon: <SiFramer />, color: "text-pink-500" },
+    { name: "JS ES6", icon: <SiJavascript />, color: "text-yellow-400" },
+    { name: "Firebase", icon: <SiFirebase />, color: "text-orange-500" },
   ];
 
   return (
-    <section className="w-full bg-linear-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-24 px-5 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
-        <div className="absolute -top-20 -left-20 w-64 h-64 bg-purple-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/3 w-32 h-32 bg-pink-500 rounded-full blur-3xl"></div>
-      </div>
+    <section id="about" className="relative w-full bg-[#030712] text-white py-32 px-5 overflow-hidden">
+      
+      {/* 🟢 AMBIENT DESIGN LAYER */}
+      <motion.div style={{ y: y1 }} className="absolute -top-24 -left-24 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] z-0" />
+      <motion.div style={{ y: y2 }} className="absolute top-1/2 -right-24 w-80 h-80 bg-blue-600/10 rounded-full blur-[100px] z-0" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold tracking-wider mb-4">
-            GET TO KNOW ME
-          </span>
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            About <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-400">Me</span>
-          </h2>
-          <div className="w-24 h-1 bg-linear-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
-        </div>
-
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Left Side - Portrait Image with Animation */}
-          <div className="lg:w-2/5 flex justify-center">
-            <div className="relative w-full max-w-sm">
-              {/* Glow Effect */}
-              <div className="absolute -inset-4 bg-linear-to-r from-purple-500 to-pink-500 rounded-3xl blur-xl opacity-30 animate-pulse"></div>
-              
-              {/* Image Container - Portrait Aspect Ratio */}
-              <div className="relative overflow-hidden rounded-2xl border-4 border-gray-800 shadow-2xl">
-                <img
-                  src={victor1}
-                  alt="Victor - Full Stack Developer"
-                  className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
-                  style={{ aspectRatio: "3/4" }}
-                />
-                
-                {/* linear Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-gray-900/60 via-transparent to-transparent"></div>
-                
-                {/* Status Badge */}
-                <div className="absolute bottom-4 left-4 bg-gray-900/80 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-700 shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-gray-200">Available for work</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative Elements */}
-              <div className="absolute -top-3 -right-3 w-20 h-20 bg-purple-500/20 rounded-full blur-md"></div>
-              <div className="absolute -bottom-3 -left-3 w-16 h-16 bg-blue-500/20 rounded-full blur-md"></div>
-            </div>
+        
+        {/* Header Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center mb-24 text-center"
+        >
+          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+            </span>
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">The Architect</span>
           </div>
+          <h2 className="text-6xl md:text-8xl font-black tracking-tighter mb-4 italic">
+            CRAFTING <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">DIGITAL</span> SOULS
+          </h2>
+          <p className="text-gray-500 font-medium uppercase tracking-[0.5em] text-xs">Based in Lagos, Nigeria • Working Worldwide</p>
+        </motion.div>
 
-          {/* Right Side - Bio & Content */}
-          <div className="lg:w-3/5">
-            {/* Introduction */}
-            <div className="mb-10">
-              <div className="inline-flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-linear-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
-                  <FaCode className="text-white text-xl" />
+        <div className="grid lg:grid-cols-12 gap-16 items-start">
+          
+          {/* Left Side: Image & Status */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="lg:col-span-5 relative group"
+          >
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-[2.5rem] blur opacity-25 group-hover:opacity-100 transition duration-1000"></div>
+            
+            <div className="relative bg-black rounded-[2.5rem] p-3 border border-white/10 overflow-hidden">
+              <motion.img
+                whileHover={{ scale: 1.03 }}
+                src={victor1}
+                alt="Victor"
+                className="rounded-[2rem] w-full h-[600px] object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700"
+              />
+              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-4/5 bg-black/60 backdrop-blur-xl border border-white/10 p-5 rounded-2xl flex items-center justify-between shadow-2xl">
+                <div>
+                  <p className="text-[10px] font-bold text-purple-400 uppercase tracking-widest">Available For</p>
+                  <p className="text-sm font-black text-white">Full-Stack Roles</p>
                 </div>
-                <h3 className="text-3xl font-bold">
-                  Hello! I'm <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-pink-400">Victor</span>
-                </h3>
+                <FaCheckCircle className="text-green-400 text-2xl animate-pulse" />
               </div>
-              
-              <p className="text-gray-300 text-lg mb-6 leading-relaxed">
-                A passionate <span className="text-purple-400 font-semibold">Full Stack Developer</span> with expertise in creating 
-                beautiful, responsive, and user-centric web applications. I transform complex problems into elegant solutions 
-                that deliver exceptional user experiences.
-              </p>
-              
-              <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                With a keen eye for detail and a commitment to clean code, I bridge the gap between design and 
-                functionality, ensuring every project is both aesthetically pleasing and technically robust.
-                My journey in web development has been driven by curiosity and a passion for creating
-                digital solutions that make a real impact.
-              </p>
             </div>
+          </motion.div>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-              {stats.map((stat, index) => (
-                <div 
-                  key={index}
-                  className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 rounded-xl p-4 text-center hover:border-purple-500/50 transition-all duration-300 hover:transform hover:scale-105 group"
+          {/* Right Side: Content, Stats & Skills */}
+          <div className="lg:col-span-7 space-y-12">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="space-y-6"
+            >
+              <h3 className="text-4xl font-black leading-tight">
+                “Every line of code is an <span className="text-purple-500">opportunity</span> to create something extraordinary.”
+              </h3>
+              <p className="text-gray-400 text-lg leading-relaxed font-medium">
+                I am <span className="text-white">Victor</span>, a specialized Full Stack Engineer. I specialize in the 
+                <span className="text-white font-bold italic"> "Intersection of Logic and Beauty."</span> I don't just solve 
+                problems; I design solutions that people actually enjoy using.
+              </p>
+            </motion.div>
+
+            {/* Bento Grid Stats */}
+            <div className="grid grid-cols-2 gap-4">
+              {stats.map((stat, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ y: -5, backgroundColor: "rgba(255,255,255,0.03)" }}
+                  className="p-8 bg-white/5 border border-white/5 rounded-[2.5rem] flex flex-col items-center text-center transition-all"
                 >
-                  <div className="text-2xl mb-2 flex justify-center group-hover:scale-110 transition-transform">
-                    {stat.icon}
-                  </div>
-                  <div className="text-2xl font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
-                    {stat.label}
-                  </div>
-                </div>
+                  <div className="text-3xl text-purple-500 mb-4">{stat.icon}</div>
+                  <h4 className="text-4xl font-black mb-1 tracking-tighter">{stat.number}</h4>
+                  <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-gray-500">{stat.label}</p>
+                </motion.div>
               ))}
             </div>
 
-            {/* Passions */}
-            <div className="mb-10">
-              <h4 className="text-xl font-bold mb-4 text-gray-200 flex items-center gap-2">
-                <span className="text-purple-400">✦</span> What I'm Passionate About
-              </h4>
-              <div className="flex flex-wrap gap-2.5">
-                {passions.map((passion, index) => (
-                  <span 
-                    key={index}
-                    className="px-3.5 py-2 bg-gray-800/40 border border-gray-700 rounded-lg text-sm hover:bg-linear-to-r hover:from-purple-500/20 hover:to-pink-500/20 hover:border-purple-500/50 hover:text-purple-300 transition-all duration-300 cursor-default"
+            {/* 🟢 NEW: Skills Cloud Section */}
+            <div className="pt-6">
+              <h4 className="text-xs font-black uppercase tracking-[0.3em] text-gray-400 mb-8 border-l-2 border-purple-500 pl-4">Core Arsenal</h4>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {skills.map((skill, i) => (
+                  <motion.div
+                    key={i}
+                    whileHover={{ scale: 1.05 }}
+                    className="flex items-center gap-3 p-4 bg-white/5 border border-white/5 rounded-2xl hover:border-purple-500/30 transition-all"
                   >
-                    {passion}
-                  </span>
+                    <span className={`text-xl ${skill.color}`}>{skill.icon}</span>
+                    <span className="text-xs font-black uppercase tracking-widest">{skill.name}</span>
+                  </motion.div>
                 ))}
               </div>
             </div>
 
-            {/* Vision Box */}
-            <div className="relative overflow-hidden rounded-2xl group">
-              <div className="absolute inset-0 bg-linear-to-r from-purple-500/10 via-pink-500/10 to-blue-500/10 group-hover:opacity-80 transition-opacity duration-500"></div>
-              <div className="absolute -inset-1 bg-linear-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-              <div className="relative bg-gray-800/30 backdrop-blur-sm border border-gray-700 p-6">
-                <div className="flex items-start gap-4">
-                  <div className="text-3xl animate-pulse">✨</div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2 text-gray-100">My Vision & Mission</h4>
-                    <p className="text-gray-300">
-                      To pioneer innovative digital solutions that not only solve real-world problems but also 
-                      inspire and elevate human experiences through technology. I believe in creating products 
-                      that make a meaningful difference and leave a lasting positive impact on users' lives.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+            {/* 🟢 WORKING GET RESUME BUTTON */}
+            <div className="flex flex-wrap gap-6 items-center pt-8">
+              <motion.a 
+                href="/resume.pdf" // Put your resume.pdf in the 'public' folder
+                download="Victor_Resume.pdf"
+                whileTap={{ scale: 0.95 }}
+                className="px-12 py-6 bg-white text-black rounded-3xl font-black uppercase tracking-[0.2em] text-[10px] hover:bg-purple-600 hover:text-white transition-all shadow-[0_20px_60px_rgba(255,255,255,0.05)] hover:shadow-purple-500/40 flex items-center justify-center gap-3 cursor-pointer"
+              >
+                <FaDownload className="text-lg" /> Get Resume
+              </motion.a>
 
-        {/* CTA */}
-        <div className="text-center mt-16">
-          <div className="inline-flex flex-col sm:flex-row gap-4">
-            <button className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-linear-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:shadow-2xl hover:shadow-purple-500/30 transform hover:scale-105 transition-all duration-300">
-              <FaDownload />
-              Download Resume
-            </button>
-            <button className="inline-flex items-center justify-center gap-3 px-8 py-4 border border-gray-600 text-gray-300 font-semibold rounded-xl hover:border-purple-500 hover:text-white hover:bg-purple-500/10 transition-all duration-300 group">
-              <FaPaperPlane className="group-hover:animate-pulse" />
-              Let's Connect & Collaborate
-            </button>
-          </div>
-          
-          {/* Quote */}
-          <div className="mt-12 max-w-2xl mx-auto">
-            <p className="text-gray-400 italic text-lg">
-              "Great web experiences are born at the intersection of technical excellence and creative vision."
-            </p>
-            <div className="w-16 h-0.5 bg-linear-to-r from-purple-500 to-pink-500 mx-auto mt-4"></div>
+              <motion.a 
+                href="/contact" 
+                whileHover={{ x: 5 }}
+                className="group flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.2em] cursor-pointer"
+              >
+                Let's Build <FaPaperPlane className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform text-purple-500 text-lg" />
+              </motion.a>
+            </div>
           </div>
         </div>
       </div>

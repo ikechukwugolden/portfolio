@@ -1,148 +1,256 @@
 import React from "react";
+import { motion } from "framer-motion";
+import {
+  FaCode,
+  FaPaintBrush,
+  FaBolt,
+  FaRocket,
+  FaTools,
+  FaMagic,
+} from "react-icons/fa";
 
 const services = [
   {
-    title: "Frontend Development",
-    description: "Building responsive, interactive user interfaces with modern frameworks like ReactJS. Creating seamless user experiences with clean, maintainable code.",
-    features: ["React Applications", "Responsive Design", "Performance Optimization", "Cross-browser Compatibility"],
-    icon: "💻"
+    title: "Frontend Mastery",
+    description:
+      "Building responsive, interactive user interfaces with modern frameworks like ReactJS. I focus on clean, maintainable code and seamless transitions.",
+    features: ["React / Vite", "Tailwind CSS", "Framer Motion", "Next.js"],
+    icon: <FaCode />,
+    color: "from-blue-500 to-cyan-400",
+    glow: "shadow-blue-500/20",
   },
   {
     title: "UI/UX Design",
-    description: "Designing intuitive and visually appealing interfaces that enhance user engagement and drive conversions.",
-    features: ["Wireframing", "Prototyping", "User Research", "Design Systems"],
-    icon: "🎨"
+    description:
+      "Designing intuitive and visually appealing interfaces that enhance user engagement and drive conversions through research-backed design.",
+    features: [
+      "Figma Prototyping",
+      "Design Systems",
+      "User Research",
+      "Wireframing",
+    ],
+    icon: <FaPaintBrush />,
+    color: "from-purple-500 to-pink-500",
+    glow: "shadow-purple-500/20",
   },
   {
-    title: "Full Stack Solutions",
-    description: "End-to-end web development with both frontend and backend integration for complete web applications.",
-    features: ["API Integration", "Database Design", "Authentication", "Deployment"],
-    icon: "⚡"
+    title: "Full Stack Integration",
+    description:
+      "End-to-end web development with seamless frontend and backend integration using robust database architectures.",
+    features: [
+      "REST/GraphQL APIs",
+      "Firebase / SQL",
+      "Authentication",
+      "Node.js",
+    ],
+    icon: <FaBolt />,
+    color: "from-yellow-500 to-orange-500",
+    glow: "shadow-orange-500/20",
   },
   {
-    title: "Website Optimization",
-    description: "Improving website performance, SEO, and accessibility to ensure maximum reach and user satisfaction.",
-    features: ["SEO Optimization", "Speed Optimization", "Accessibility", "Analytics"],
-    icon: "🚀"
+    title: "Speed Optimization",
+    description:
+      "Improving website performance, SEO, and accessibility to ensure maximum reach and user satisfaction on all devices.",
+    features: [
+      "SEO Strategies",
+      "Core Web Vitals",
+      "Image Lazy Loading",
+      "Caching",
+    ],
+    icon: <FaRocket />,
+    color: "from-green-500 to-emerald-400",
+    glow: "shadow-green-500/20",
   },
   {
-    title: "Maintenance & Support",
-    description: "Ongoing support, updates, and maintenance to keep your website running smoothly and securely.",
-    features: ["Regular Updates", "Security Patches", "Bug Fixes", "Technical Support"],
-    icon: "🔧"
+    title: "Maintenance & Scale",
+    description:
+      "Ongoing support, security updates, and performance monitoring to keep your website running smoothly and securely.",
+    features: ["Security Patches", "Bug Fixes", "CI/CD Setup", "Cloud Hosting"],
+    icon: <FaTools />,
+    color: "from-red-500 to-rose-500",
+    glow: "shadow-red-500/20",
   },
   {
-    title: "Custom Web Applications",
-    description: "Tailored solutions for specific business needs with scalable architecture and modern technologies.",
-    features: ["Custom Features", "Scalable Architecture", "Third-party Integrations", "Custom CMS"],
-    icon: "✨"
-  }
+    title: "Custom Web Apps",
+    description:
+      "Tailored solutions for specific business needs with scalable architecture and modern third-party API integrations.",
+    features: [
+      "Custom CMS",
+      "Fintech Solutions",
+      "E-commerce",
+      "SaaS Platforms",
+    ],
+    icon: <FaMagic />,
+    color: "from-indigo-500 to-purple-600",
+    glow: "shadow-indigo-500/20",
+  },
 ];
 
-const ServiceCard = ({ service }) => {
+const ServiceCard = ({ service, index }) => {
   return (
-    <div className="group bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-purple-500 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
-      <div className="flex items-start justify-between mb-4">
-        <div className="text-3xl mb-4">{service.icon}</div>
-        <span className="text-xs font-semibold bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full">
-          Service
-        </span>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
+      whileHover={{ y: -10 }}
+      className="group relative bg-white/5 border border-white/10 rounded-[2.5rem] p-8 overflow-hidden hover:border-white/20 transition-all duration-500"
+    >
+      {/* Background Glow Effect */}
+      <div
+        className={`absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-20 blur-[80px] transition-opacity duration-500`}
+      ></div>
+
+      <div className="relative z-10">
+        <div className="flex justify-between items-start mb-8">
+          {/* 🟢 THE FIX: Solid Icon with Gradient Background Container */}
+          <div className="relative">
+            {/* Soft Glow behind the icon */}
+            <div
+              className={`absolute inset-0 bg-gradient-to-br ${service.color} blur-xl opacity-20 group-hover:opacity-40 transition-opacity`}
+            ></div>
+
+            <div
+              className={`relative text-3xl p-5 rounded-2xl bg-gray-900 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500`}
+            >
+              {/* Force the icon to use a specific color from the gradient */}
+              <div className="text-white group-hover:text-purple-400 transition-colors">
+                {service.icon}
+              </div>
+            </div>
+          </div>
+
+          <span className="text-[10px] font-black uppercase tracking-widest text-gray-700 group-hover:text-purple-400 transition-colors">
+            0{index + 1}
+          </span>
+        </div>
+
+        <h3 className="text-2xl font-black mb-4 text-white uppercase tracking-tighter">
+          {service.title}
+        </h3>
+
+        <p className="text-gray-400 text-sm leading-relaxed mb-6 font-medium">
+          {service.description}
+        </p>
+
+        <ul className="grid grid-cols-2 gap-y-3 gap-x-2 border-t border-white/5 pt-6">
+          {service.features.map((feature, idx) => (
+            <li
+              key={idx}
+              className="flex items-center text-[9px] font-black uppercase tracking-wider text-gray-500 group-hover:text-gray-200 transition-colors"
+            >
+              <div
+                className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${service.color} mr-2 shadow-lg`}
+              ></div>
+              {feature}
+            </li>
+          ))}
+        </ul>
       </div>
-      
-      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
-        {service.title}
-      </h3>
-      
-      <p className="text-gray-300 mb-5 leading-relaxed">
-        {service.description}
-      </p>
-      
-      <ul className="space-y-2">
-        {service.features.map((feature, index) => (
-          <li key={index} className="flex items-center text-gray-400 group-hover:text-gray-300 transition-colors">
-            <svg className="w-4 h-4 mr-2 text-purple-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-            </svg>
-            <span className="text-sm">{feature}</span>
-          </li>
-        ))}
-      </ul>
-      
-      <button className="mt-6 w-full py-2 bg-purple-600/20 text-purple-400 rounded-lg font-medium hover:bg-purple-600 hover:text-white transition-all duration-300 transform group-hover:scale-[1.02]">
-        Learn More
-      </button>
-    </div>
+    </motion.div>
   );
 };
 
 const Services = () => {
   return (
-    <section className="w-full bg-gray-900 text-white py-20 px-5">
-      <div className="max-w-7xl mx-auto">
+    <section
+      id="services"
+      className="w-full bg-[#030712] text-white py-32 px-5 relative overflow-hidden"
+    >
+      {/* Background Decorative Element */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-[150px] -z-0"></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-          <span className="text-purple-400 font-semibold tracking-wider uppercase text-sm">
-            What I Offer
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">
-            My <span className="text-purple-400">Services</span>
-          </h2>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-            I provide comprehensive web development solutions tailored to your needs. 
-            From concept to deployment, I ensure quality, performance, and user satisfaction.
-          </p>
+        <div className="flex flex-col items-center text-center mb-24">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6"
+          >
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">
+              My Arsenal
+            </span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-6xl md:text-8xl font-black tracking-tighter mb-8 italic"
+          >
+            SERVICES{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+              &
+            </span>{" "}
+            SOLUTIONS
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-gray-500 max-w-2xl font-medium uppercase tracking-[0.4em] text-[10px]"
+          >
+            Delivering high-performance digital products through technical
+            excellence.
+          </motion.p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <ServiceCard key={index} service={service} />
+            <ServiceCard key={index} index={index} service={service} />
           ))}
         </div>
 
-        {/* Process Section */}
-        <div className="mt-20 bg-gray-800/30 border border-gray-700 rounded-2xl p-8">
-          <h3 className="text-2xl font-bold text-center mb-10">
-            My <span className="text-purple-400">Development Process</span>
+        {/* Workflow Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="mt-32 p-12 bg-white/5 rounded-[3rem] border border-white/10 relative overflow-hidden group"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+
+          <h3 className="text-3xl font-black text-center mb-16 tracking-tighter italic">
+            THE <span className="text-purple-500 uppercase">Workflow</span>
           </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             {[
-              { step: "01", title: "Discovery", desc: "Understanding your needs & goals" },
-              { step: "02", title: "Planning", desc: "Creating roadmap & architecture" },
-              { step: "03", title: "Development", desc: "Building with modern technologies" },
-              { step: "04", title: "Launch", desc: "Deployment & ongoing support" }
+              {
+                step: "01",
+                title: "Discovery",
+                desc: "Understanding the 'Why' behind your project.",
+              },
+              {
+                step: "02",
+                title: "Architecture",
+                desc: "Designing the blueprint for scale.",
+              },
+              {
+                step: "03",
+                title: "Execution",
+                desc: "Building with pixel perfection.",
+              },
+              {
+                step: "04",
+                title: "Launch",
+                desc: "Deployment & continuous growth.",
+              },
             ].map((process, index) => (
-              <div key={index} className="text-center group">
-                <div className="relative">
-                  <div className="w-16 h-16 mx-auto bg-purple-600/20 border-2 border-purple-500/30 rounded-full flex items-center justify-center text-2xl font-bold text-purple-400 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 mb-4">
-                    {process.step}
-                  </div>
-                  {index < 3 && (
-                    <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-gray-700 group-hover:bg-purple-500 transition-colors duration-300"></div>
-                  )}
+              <div key={index} className="relative text-center">
+                <div className="text-5xl font-black text-white/5 mb-4 group-hover:text-purple-500/20 transition-colors">
+                  {process.step}
                 </div>
-                <h4 className="font-bold text-lg mb-2">{process.title}</h4>
-                <p className="text-gray-400 text-sm">{process.desc}</p>
+                <h4 className="font-black text-[10px] uppercase tracking-widest mb-2 text-purple-400">
+                  {process.title}
+                </h4>
+                <p className="text-gray-500 text-[10px] font-bold uppercase leading-relaxed">
+                  {process.desc}
+                </p>
               </div>
             ))}
           </div>
-        </div>
-
-        {/* CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-gray-300 mb-8 text-lg">
-            Have a project in mind? Let's work together to bring your vision to life!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-all duration-300 transform hover:scale-105">
-              Start a Project
-            </button>
-            <button className="px-8 py-3 border border-purple-500 text-purple-400 font-semibold rounded-lg hover:bg-purple-500/10 transition-all duration-300">
-              View My Portfolio
-            </button>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
