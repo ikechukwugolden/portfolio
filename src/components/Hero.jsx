@@ -20,12 +20,12 @@ const Hero = () => {
                 .dark { --hero-bg: url(${heroTechBg}); }
             `}} />
 
-            {/* 🟢 OVERLAY: Swaps from a soft studio light to your deep dark gradient */}
+            {/* 🟢 OVERLAY: Swaps from a soft studio light to your deep dark linear */}
             <div className="absolute inset-0 transition-opacity duration-500 
-                bg-gradient-to-br from-purple-50 via-white to-white opacity-100 dark:opacity-0"></div>
+                bg-linear-to-br from-purple-50 via-white to-white opacity-100 dark:opacity-0"></div>
             
             <div className="absolute inset-0 transition-opacity duration-500 
-                bg-gradient-to-br from-[#030712] via-[#030712]/80 to-transparent opacity-0 dark:opacity-100"></div>
+                bg-linear-to-br from-[#030712] via-[#030712]/80 to-transparent opacity-0 dark:opacity-100"></div>
 
             {/* 🟢 Animated Ambient Light (Purple Glow) */}
             <motion.div 
@@ -56,7 +56,7 @@ const Hero = () => {
 
                     <h1 className="text-5xl md:text-8xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
                         CRAFTING <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 dark:from-purple-400 dark:via-pink-500 dark:to-blue-500">
+                        <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 dark:from-purple-400 dark:via-pink-500 dark:to-blue-500">
                             DIGITAL SOULS
                         </span>
                     </h1>
@@ -102,7 +102,7 @@ const Hero = () => {
                     </div>
 
                     <div className="relative group">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-[2.5rem] blur opacity-20 dark:opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                        <div className="absolute -inset-1 bg-linear-to-r from-purple-600 to-blue-600 rounded-[2.5rem] blur opacity-20 dark:opacity-30 group-hover:opacity-60 transition duration-1000"></div>
                         <motion.div
                             animate={{ y: [0, -20, 0] }}
                             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -135,7 +135,7 @@ const Hero = () => {
                 className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
             >
                 <span className="text-[8px] font-black uppercase tracking-[0.4em] text-gray-400 dark:text-gray-500">Scroll</span>
-                <div className="w-[1px] h-12 bg-gradient-to-b from-purple-500 to-transparent"></div>
+                <div className="w-[1px] h-12 bg-linear-to-b from-purple-500 to-transparent"></div>
             </motion.div>
         </section>
     );

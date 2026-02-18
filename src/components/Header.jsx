@@ -40,7 +40,7 @@ const Header = () => {
         
         {/* LOGO */}
         <Link to="/" className="group flex items-center gap-2">
-          <div className="w-10 h-10 bg-gradient-to-tr from-purple-600 to-pink-500 rounded-xl flex items-center justify-center text-white font-black group-hover:rotate-12 transition-transform">
+          <div className="w-10 h-10 bg-linear-to-tr from-purple-600 to-pink-500 rounded-xl flex items-center justify-center text-white font-black group-hover:rotate-12 transition-transform">
             IV
           </div>
           <span className="text-black dark:text-white text-xl font-black tracking-tighter uppercase italic">

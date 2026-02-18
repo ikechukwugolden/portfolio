@@ -7,9 +7,8 @@ const CustomCursor = () => {
 
   useEffect(() => {
     const moveCursor = (e) => {
-      // Offset by 16px to center the 32px (w-8) circle
-      cursorX.set(e.clientX - 16);
-      cursorY.set(e.clientY - 16);
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
     };
 
     window.addEventListener("mousemove", moveCursor);
@@ -18,14 +17,25 @@ const CustomCursor = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-10 h-10 rounded-full border-2 border-purple-500 pointer-events-none z-[99999] hidden md:flex items-center justify-center"
+      className="fixed top-0 left-0 pointer-events-none z-[99999] hidden md:block"
       style={{
         x: cursorX,
         y: cursorY,
       }}
     >
-      {/* The center dot ensures you always know exactly where you are pointing */}
-      <div className="w-1 h-1 bg-purple-500 rounded-full" />
+      <div className="relative -translate-x-[15%] -translate-y-[15%]">
+        {/* Pointer Arrow SVG */}
+        <svg 
+          width="28" 
+          height="28" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+          className="fill-purple-600 stroke-white stroke-[1.5px] drop-shadow-lg"
+        >
+          <path d="M3 3L10.07 19.97L12.58 12.58L19.97 10.07L3 3Z" />
+        </svg>
+      </div>
     </motion.div>
   );
 };

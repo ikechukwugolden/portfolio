@@ -72,7 +72,7 @@ const ProjectCard = ({ project, isFeatured }) => (
     
     <div className={`relative overflow-hidden ${isFeatured ? "h-[200px] md:h-[300px]" : "h-64"}`}>
       <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
     </div>
     
     <div className="p-6 md:p-8">
@@ -169,7 +169,7 @@ const Projects = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mt-16 md:mt-24 p-8 md:p-20 
-            bg-white dark:bg-gradient-to-b dark:from-white/5 dark:to-transparent 
+            bg-white dark:bg-linear-to-b dark:from-white/5 dark:to-transparent 
             border border-gray-200 dark:border-white/10 
             rounded-[2.5rem] md:rounded-[4rem] 
             text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-8 md:gap-10 
@@ -177,7 +177,7 @@ const Projects = () => {
         >
           <div className="max-w-xl">
             <h3 className="text-3xl md:text-6xl font-black tracking-tighter mb-4 md:mb-6 italic uppercase leading-tight text-slate-900 dark:text-white">
-              Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-500">Elevate</span> your project?
+              Ready to <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-500">Elevate</span> your project?
             </h3>
             <p className="text-gray-500 dark:text-gray-400 font-medium uppercase tracking-[0.1em] md:tracking-[0.2em] text-[9px] md:text-[10px]">
               Available for freelance opportunities and full-stack collaborations.

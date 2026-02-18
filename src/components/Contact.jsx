@@ -66,7 +66,7 @@ const Contact = () => {
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-600 dark:text-purple-400">Secure Line</span>
           </div>
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter italic mb-4">
-            LET'S <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-500 dark:from-purple-400 dark:to-blue-400">SYNC</span> UP
+            LET'S <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-600 to-blue-500 dark:from-purple-400 dark:to-blue-400">SYNC</span> UP
           </h2>
           <p className="text-gray-500 dark:text-gray-400 font-medium uppercase tracking-[0.4em] text-[10px]">Worldwide Collaboration Available</p>
         </motion.div>
@@ -95,7 +95,7 @@ const Contact = () => {
             ))}
 
             {/* Nigeria Time Card */}
-            <div className="p-8 bg-gradient-to-br from-purple-600/10 to-blue-600/10 border border-purple-500/20 dark:border-white/10 rounded-[2.5rem] relative overflow-hidden group">
+            <div className="p-8 bg-linear-to-br from-purple-600/10 to-blue-600/10 border border-purple-500/20 dark:border-white/10 rounded-[2.5rem] relative overflow-hidden group">
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-4">
                   <FaClock className="text-purple-600 dark:text-purple-400" />
