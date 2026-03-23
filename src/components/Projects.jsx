@@ -224,7 +224,7 @@ const ProjectCard = ({ project, index, onPreview, liked, onToggleLike }) => (
       type="button"
       onClick={() => onPreview(project)}
       data-cursor-label="Preview"
-      className="relative block w-full h-56 text-left"
+    className="relative block w-full h-52 sm:h-56 text-left"
       aria-label={`Preview ${project.title}`}
     >
       <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -237,10 +237,10 @@ const ProjectCard = ({ project, index, onPreview, liked, onToggleLike }) => (
       </div>
     </button>
 
-    <div className="p-6 md:p-7 flex flex-col gap-4">
+      <div className="p-5 sm:p-6 md:p-7 flex flex-col gap-4">
       <div>
-        <h3 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">{project.title}</h3>
-        <p className="text-[11px] uppercase tracking-[0.18em] text-blue-700 dark:text-blue-300 font-bold mt-1">{project.tagline}</p>
+        <h3 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white">{project.title}</h3>
+        <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-blue-700 dark:text-blue-300 font-bold mt-1">{project.tagline}</p>
       </div>
 
       <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">{project.description}</p>
@@ -269,19 +269,19 @@ const ProjectCard = ({ project, index, onPreview, liked, onToggleLike }) => (
         ))}
       </div>
 
-      <div className="mt-2 flex gap-2">
+      <div className="mt-2 flex flex-wrap gap-2">
         <a
           href={project.demo}
           target="_blank"
           rel="noreferrer"
-          className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-900 dark:bg-blue-600 text-white text-[11px] font-black uppercase tracking-[0.16em] hover:bg-blue-700 transition-colors"
+          className="flex-1 min-w-[130px] inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-900 dark:bg-blue-600 text-white text-[11px] font-black uppercase tracking-[0.16em] hover:bg-blue-700 transition-colors"
         >
           Live <FaExternalLinkAlt className="text-xs" />
         </a>
         <button
           type="button"
           onClick={() => onPreview(project)}
-          className="px-4 py-3 rounded-xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors text-[10px] font-black uppercase tracking-[0.12em]"
+          className="flex-1 sm:flex-none min-w-[120px] px-4 py-3 rounded-xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors text-[10px] font-black uppercase tracking-[0.12em]"
           aria-label={`Full breakdown for ${project.title}`}
         >
           Breakdown
@@ -290,7 +290,7 @@ const ProjectCard = ({ project, index, onPreview, liked, onToggleLike }) => (
           href={project.github}
           target="_blank"
           rel="noreferrer"
-          className="px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
+          className="w-full sm:w-auto px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors flex items-center justify-center"
           aria-label={`${project.title} GitHub`}
         >
           <FaGithub />
@@ -378,7 +378,7 @@ const Projects = () => {
           >
             2026 Portfolio Format
           </motion.span>
-          <h2 className="mt-4 text-4xl md:text-7xl font-black tracking-tight uppercase">Project Case Studies</h2>
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-7xl font-black tracking-tight uppercase">Project Case Studies</h2>
           <p className="mt-5 max-w-3xl text-slate-600 dark:text-slate-300 leading-relaxed">
             Each project below is presented like a product launch: clear value proposition, key features, stack, and direct access to the live experience.
           </p>
@@ -414,7 +414,7 @@ const Projects = () => {
                   <span className="inline-flex items-center px-3 py-1 rounded-full border border-white/20 bg-white/10 text-[10px] font-black uppercase tracking-[0.18em]">
                     Featured Release - {featuredProject.year}
                   </span>
-                  <h3 className="mt-4 text-4xl md:text-5xl font-black tracking-tight">{featuredProject.title}</h3>
+                  <h3 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">{featuredProject.title}</h3>
                   <p className="mt-2 text-sm uppercase tracking-[0.2em] text-cyan-300 font-bold">{featuredProject.tagline}</p>
                 </div>
 
@@ -559,7 +559,7 @@ const Projects = () => {
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
               transition={{ duration: 0.25 }}
               onClick={(event) => event.stopPropagation()}
-              className="w-full max-w-4xl rounded-[2rem] overflow-hidden bg-white dark:bg-[#081023] border border-slate-300 dark:border-slate-700 shadow-2xl"
+            className="w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-[2rem] bg-white dark:bg-[#081023] border border-slate-300 dark:border-slate-700 shadow-2xl"
             >
               <div className="relative">
                 <img src={activeProject.image} alt={activeProject.title} className="w-full h-[240px] md:h-[420px] object-cover" />
@@ -634,7 +634,7 @@ const Projects = () => {
                   ))}
                 </div>
 
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-3">
                   <a
                     href={activeProject.demo}
                     target="_blank"

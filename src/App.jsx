@@ -189,7 +189,7 @@ const App = () => {
 
         {/* Floating WhatsApp Action (Global) */}
         <a
-          href="https://wa.me/2349045817261"
+          href="https://web.whatsapp.com/send?phone=2349045817261&text=Hello%20Victor%2C%20I%20want%20to%20chat%20about%20a%20project."
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-8 right-8 z-[99] bg-green-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all md:hidden"

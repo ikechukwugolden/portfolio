@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaArrowUp, FaEnvelope, FaMapMarkerAlt, FaCircle } from "react-icons/fa";
 
@@ -11,45 +11,45 @@ const Footer = () => {
   const stack = ["React", "Next.js", "Firebase", "Tailwind", "Framer Motion", "Node.js", "MongoDB"];
 
   return (
-    <footer className="w-full bg-white dark:bg-[#030712] text-slate-900 dark:text-white pt-24 pb-12 px-6 relative overflow-hidden border-t border-gray-200 dark:border-white/5 transition-colors duration-500">
-      
-      {/* Live Availability Indicator */}
-      <div className="max-w-7xl mx-auto mb-16">
+    <footer className="w-full bg-white dark:bg-[#030712] text-slate-900 dark:text-white pt-16 md:pt-24 pb-10 md:pb-12 px-4 md:px-6 relative overflow-hidden border-t border-gray-200 dark:border-white/5 transition-colors duration-500">
+      <div className="max-w-7xl mx-auto mb-10 md:mb-16">
         <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-green-500/5 border border-green-500/20">
-          <motion.div
-            animate={{ opacity: [1, 0.4, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
+          <motion.div animate={{ opacity: [1, 0.4, 1] }} transition={{ duration: 2, repeat: Infinity }}>
             <FaCircle className="text-green-500 text-[8px]" />
           </motion.div>
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-green-600 dark:text-green-500">
-            Available for new projects — {new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(new Date())}
+          <span className="text-[10px] font-black uppercase tracking-[0.12em] sm:tracking-[0.2em] text-green-600 dark:text-green-500">
+            Available for new projects - {new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric" }).format(new Date())}
           </span>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
-          
-          {/* Column 1: Brand & Bio */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-16 mb-14 md:mb-20">
           <div className="lg:col-span-1">
-            <h2 className="text-3xl font-black tracking-tighter italic mb-6 uppercase">
+            <h2 className="text-2xl sm:text-3xl font-black tracking-tighter italic mb-6 uppercase">
               Ikechukwu victor<span className="text-purple-600 dark:text-purple-500">.</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-8 font-medium">
               Crafting high-performance digital experiences with a focus on clean code and intuitive design.
             </p>
             <div className="flex gap-4">
-              <a href="https://github.com/ikechukwugolden" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-purple-600 hover:text-white hover:border-purple-500 transition-all duration-300">
+              <a
+                href="https://github.com/ikechukwugolden"
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-purple-600 hover:text-white hover:border-purple-500 transition-all duration-300"
+              >
                 <FaGithub />
               </a>
-              <a href="#" className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-purple-600 hover:text-white hover:border-purple-500 transition-all duration-300">
+              <a
+                href="#"
+                className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-purple-600 hover:text-white hover:border-purple-500 transition-all duration-300"
+              >
                 <FaLinkedin />
               </a>
             </div>
           </div>
 
-          {/* Column 2: Navigation */}
           <div>
             <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-600 dark:text-purple-400 mb-8">Navigation</h4>
             <ul className="space-y-4">
@@ -63,46 +63,46 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: Tech Stack */}
           <div>
             <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-600 dark:text-purple-400 mb-8">Main Stack</h4>
             <div className="flex flex-wrap gap-2">
               {stack.map((tech) => (
-                <span key={tech} className="px-3 py-1 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg text-[9px] font-black uppercase tracking-tighter text-gray-600 dark:text-gray-400">
+                <span
+                  key={tech}
+                  className="px-3 py-1 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg text-[9px] font-black uppercase tracking-tighter text-gray-600 dark:text-gray-400"
+                >
                   {tech}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Column 4: Contact */}
           <div>
             <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-600 dark:text-purple-400 mb-8">Contact</h4>
             <div className="space-y-4">
-               <div className="flex items-center gap-3">
-                  <FaEnvelope className="text-purple-600 dark:text-purple-500" />
-                  <span className="text-sm font-bold text-gray-700 dark:text-gray-300">ikechukwuv074@gmail.com</span>
-               </div>
-               <div className="flex items-center gap-3">
-                  <FaMapMarkerAlt className="text-purple-600 dark:text-purple-500" />
-                  <span className="text-sm font-bold text-gray-700 dark:text-gray-300">Abia, Nigeria</span>
-               </div>
+              <div className="flex items-center gap-3">
+                <FaEnvelope className="text-purple-600 dark:text-purple-500" />
+                <span className="text-sm font-bold text-gray-700 dark:text-gray-300 break-all">ikechukwuv074@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <FaMapMarkerAlt className="text-purple-600 dark:text-purple-500" />
+                <span className="text-sm font-bold text-gray-700 dark:text-gray-300">Abia, Nigeria</span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-12 border-t border-gray-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-[10px] font-black text-gray-400 dark:text-gray-600 uppercase tracking-[0.2em]">
+        <div className="pt-10 md:pt-12 border-t border-gray-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-[10px] font-black text-gray-400 dark:text-gray-600 uppercase tracking-[0.12em] sm:tracking-[0.2em] text-center md:text-left">
             © {currentYear} GOLDEN DESIGNS. ALL RIGHTS RESERVED.
           </p>
-          
+
           <motion.button
             whileHover={{ y: -5 }}
             onClick={scrollToTop}
             className="group flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-purple-600 transition-colors"
           >
-            Back to Top 
+            Back to Top
             <div className="w-8 h-8 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center group-hover:border-purple-600 dark:group-hover:border-purple-500/50">
               <FaArrowUp size={12} />
             </div>

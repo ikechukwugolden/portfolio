@@ -32,7 +32,7 @@ const Header = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  const whatsappLink = `https://wa.me/2349045817261`;
+  const whatsappLink = "https://web.whatsapp.com/send?phone=2349045817261&text=Hello%20Victor%2C%20I%20want%20to%20chat%20about%20a%20project.";
 
   const triggerHaptic = (pattern = 16) => {
     if (typeof navigator !== "undefined" && typeof navigator.vibrate === "function") {
@@ -46,16 +46,19 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[100%] max-w-7xl z-[100]">
-      <div className="bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-[2rem] px-6 h-20 flex items-center justify-between shadow-2xl transition-all duration-500">
+    <header className="fixed top-0 sm:top-4 left-1/2 -translate-x-1/2 w-[calc(100%-1rem)] sm:w-full max-w-7xl z-[100]">
+      <div className="bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-2xl sm:rounded-[2rem] px-3 sm:px-6 h-16 sm:h-20 flex items-center justify-between shadow-2xl transition-all duration-500">
         
         {/* LOGO */}
-        <Link to="/" className="group flex items-center gap-2">
+        <Link to="/" className="group flex items-center gap-2 min-w-0">
           <div className="w-10 h-10 bg-linear-to-tr from-purple-600 to-pink-500 rounded-xl flex items-center justify-center text-white font-black group-hover:rotate-12 transition-transform">
             IV
           </div>
-          <span className="text-black dark:text-white text-xl font-black tracking-tighter uppercase italic">
-           Ikechkwu Victor<span className="text-purple-500">.</span>
+          <span className="hidden sm:block text-black dark:text-white text-base lg:text-xl font-black tracking-tighter uppercase italic truncate">
+            Ikechkwu Victor<span className="text-purple-500">.</span>
+          </span>
+          <span className="sm:hidden text-black dark:text-white text-sm font-black uppercase tracking-tight">
+            Victor<span className="text-purple-500">.</span>
           </span>
         </Link>
 
@@ -77,7 +80,7 @@ const Header = () => {
         </nav>
 
         {/* RIGHT ACTIONS */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           {/* DARK MODE TOGGLE */}
           <button
             onClick={handleThemeToggle}
@@ -102,6 +105,7 @@ const Header = () => {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden w-10 h-10 flex items-center justify-center text-black dark:text-white text-xl"
+            aria-label="Toggle menu"
           >
             {menuOpen ? <FaTimes /> : <FaBars />}
           </button>
@@ -115,14 +119,14 @@ const Header = () => {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="absolute top-24 left-0 w-full bg-white dark:bg-[#0d0d0d] border border-black/5 dark:border-white/10 rounded-[2.5rem] p-8 flex flex-col items-center gap-6 shadow-2xl md:hidden z-[-1]"
+            className="absolute top-20 sm:top-24 left-0 w-full bg-white dark:bg-[#0d0d0d] border border-black/5 dark:border-white/10 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 flex flex-col items-center gap-5 sm:gap-6 shadow-2xl md:hidden z-[-1]"
           >
             {navLinks.map((link) => (
               <Link 
                 key={link.name} 
                 to={link.path} 
                 onClick={() => setMenuOpen(false)}
-                className="text-2xl font-black uppercase tracking-tighter text-black dark:text-white hover:text-purple-500 transition-colors"
+                className="text-xl sm:text-2xl font-black uppercase tracking-tighter text-black dark:text-white hover:text-purple-500 transition-colors"
               >
                 {link.name}
               </Link>

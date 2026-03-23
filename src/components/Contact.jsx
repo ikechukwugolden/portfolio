@@ -150,7 +150,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="w-full bg-white dark:bg-[#030712] text-black dark:text-white py-32 px-5 relative transition-colors duration-500 overflow-hidden"
+      className="w-full bg-white dark:bg-[#030712] text-black dark:text-white py-20 md:py-32 px-4 md:px-5 relative transition-colors duration-500 overflow-hidden"
     >
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/5 dark:bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/5 dark:bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
@@ -160,18 +160,18 @@ const Contact = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-14 md:mb-20"
         >
           <div className="inline-block px-4 py-1.5 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 mb-6">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-600 dark:text-purple-400">Secure Line</span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter italic mb-4">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter italic mb-4">
             LET'S <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-600 to-blue-500 dark:from-purple-400 dark:to-blue-400">SYNC</span> UP
           </h2>
-          <p className="text-gray-500 dark:text-gray-400 font-medium uppercase tracking-[0.4em] text-[10px]">Worldwide Collaboration Available</p>
+          <p className="text-gray-500 dark:text-gray-400 font-medium uppercase tracking-[0.16em] sm:tracking-[0.4em] text-[10px]">Worldwide Collaboration Available</p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-12 gap-12">
+        <div className="grid lg:grid-cols-12 gap-8 md:gap-12">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -186,7 +186,7 @@ const Contact = () => {
                 rel={item.title === "Location" ? "noreferrer" : undefined}
                 whileHover={{ x: 10 }}
                 transition={{ delay: index * 0.05 }}
-                className="flex items-center gap-6 p-6 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-[2rem] transition-all group"
+                className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-[1.6rem] sm:rounded-[2rem] transition-all group"
               >
                 <div className={`text-2xl ${item.color} group-hover:scale-110 transition-transform`}>{item.icon}</div>
                 <div>
@@ -196,13 +196,13 @@ const Contact = () => {
               </motion.a>
             ))}
 
-            <div className="p-8 bg-linear-to-br from-purple-600/10 to-blue-600/10 border border-purple-500/20 dark:border-white/10 rounded-[2.5rem] relative overflow-hidden group">
+            <div className="p-6 sm:p-8 bg-linear-to-br from-purple-600/10 to-blue-600/10 border border-purple-500/20 dark:border-white/10 rounded-[2rem] sm:rounded-[2.5rem] relative overflow-hidden group">
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-4">
                   <FaClock className="text-purple-600 dark:text-purple-400" />
                   <span className="text-[10px] font-black uppercase tracking-widest text-purple-600 dark:text-purple-400">Abia, Nigeria</span>
                 </div>
-                <h4 className="text-4xl font-black tracking-tighter text-gray-800 dark:text-white mb-2">{time || "Syncing..."}</h4>
+                <h4 className="text-3xl sm:text-4xl font-black tracking-tighter text-gray-800 dark:text-white mb-2">{time || "Syncing..."}</h4>
                 <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">GMT +1 (West Africa Time)</p>
               </div>
             </div>
@@ -212,12 +212,12 @@ const Contact = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-8 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-[3rem] p-8 md:p-12 backdrop-blur-xl"
+            className="lg:col-span-8 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-[2rem] sm:rounded-[3rem] p-5 sm:p-8 md:p-12 backdrop-blur-xl"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 ml-2">Identify Yourself</label>
+                  <label className="text-[10px] font-black uppercase tracking-[0.16em] sm:tracking-[0.2em] text-gray-400 ml-2">Identify Yourself</label>
                   <input
                     type="text"
                     name="name"
@@ -230,7 +230,7 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 ml-2">Digital Address</label>
+                  <label className="text-[10px] font-black uppercase tracking-[0.16em] sm:tracking-[0.2em] text-gray-400 ml-2">Digital Address</label>
                   <motion.input
                     animate={emailShake ? { x: [0, -7, 7, -5, 5, -2, 2, 0] } : { x: 0 }}
                     transition={{ duration: 0.35 }}
@@ -255,7 +255,7 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 ml-2">Objective</label>
+                <label className="text-[10px] font-black uppercase tracking-[0.16em] sm:tracking-[0.2em] text-gray-400 ml-2">Objective</label>
                 <input
                   type="text"
                   name="subject"
@@ -268,7 +268,7 @@ const Contact = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 ml-2">The Vision</label>
+                <label className="text-[10px] font-black uppercase tracking-[0.16em] sm:tracking-[0.2em] text-gray-400 ml-2">The Vision</label>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -305,7 +305,7 @@ const Contact = () => {
                   type="submit"
                   disabled={status === "sending"}
                   data-cursor-label={status === "success" ? "Sent" : "Send"}
-                  className={`w-full py-5 rounded-2xl font-black uppercase tracking-[0.3em] text-[10px] transition-all flex items-center justify-center gap-3 ${
+                  className={`w-full py-5 rounded-2xl font-black uppercase tracking-[0.16em] sm:tracking-[0.3em] text-[10px] transition-all flex items-center justify-center gap-3 ${
                     status === "success"
                       ? "bg-green-500 text-white"
                       : "bg-black dark:bg-white text-white dark:text-black hover:bg-purple-600 hover:text-white shadow-xl shadow-purple-500/10"

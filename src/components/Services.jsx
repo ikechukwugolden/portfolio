@@ -62,18 +62,18 @@ const ServiceCard = ({ service, index }) => {
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
       whileHover={{ y: -10 }}
-      className="group relative bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-[2.5rem] p-8 overflow-hidden hover:border-purple-500/30 transition-all duration-500 shadow-sm hover:shadow-xl"
+      className="group relative bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-[2rem] sm:rounded-[2.5rem] p-5 sm:p-8 overflow-hidden hover:border-purple-500/30 transition-all duration-500 shadow-sm hover:shadow-xl"
     >
       {/* Background Glow Effect */}
       <div className={`absolute -top-24 -right-24 w-48 h-48 bg-linear-to-br ${service.color} opacity-0 group-hover:opacity-10 dark:group-hover:opacity-20 blur-[80px] transition-opacity duration-500`}></div>
 
       <div className="relative z-10">
-        <div className="flex justify-between items-start mb-8">
+        <div className="flex justify-between items-start mb-6 sm:mb-8">
           <div className="relative">
             {/* Soft Glow behind the icon */}
             <div className={`absolute inset-0 bg-linear-to-br ${service.color} blur-xl opacity-20 group-hover:opacity-40 transition-opacity`}></div>
 
-            <div className={`relative text-3xl p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
+            <div className={`relative text-2xl sm:text-3xl p-4 sm:p-5 rounded-2xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
               <div className="text-slate-800 dark:text-white group-hover:text-purple-500 transition-colors">
                 {service.icon}
               </div>
@@ -85,7 +85,7 @@ const ServiceCard = ({ service, index }) => {
           </span>
         </div>
 
-        <h3 className="text-2xl font-black mb-4 text-slate-900 dark:text-white uppercase tracking-tighter">
+        <h3 className="text-xl sm:text-2xl font-black mb-4 text-slate-900 dark:text-white uppercase tracking-tighter">
           {service.title}
         </h3>
 
@@ -108,13 +108,13 @@ const ServiceCard = ({ service, index }) => {
 
 const Services = () => {
   return (
-    <section id="services" className="w-full bg-white dark:bg-[#030712] text-slate-900 dark:text-white py-32 px-5 relative overflow-hidden transition-colors duration-500">
+    <section id="services" className="w-full bg-white dark:bg-[#030712] text-slate-900 dark:text-white py-20 md:py-32 px-4 md:px-5 relative overflow-hidden transition-colors duration-500">
       {/* Background Decorative Element */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-[150px] -z-0"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-24">
+        <div className="flex flex-col items-center text-center mb-14 md:mb-24">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -128,7 +128,7 @@ const Services = () => {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-8xl font-black tracking-tighter mb-8 italic uppercase"
+            className="text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter mb-8 italic uppercase"
           >
             SERVICES{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400">
@@ -140,7 +140,7 @@ const Services = () => {
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="text-gray-500 max-w-2xl font-medium uppercase tracking-[0.4em] text-[10px]"
+            className="text-gray-500 max-w-2xl font-medium uppercase tracking-[0.16em] sm:tracking-[0.4em] text-[10px]"
           >
             Delivering high-performance digital products through technical excellence.
           </motion.p>
@@ -157,15 +157,15 @@ const Services = () => {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="mt-32 p-12 bg-gray-50 dark:bg-white/5 rounded-[3rem] border border-gray-200 dark:border-white/10 relative overflow-hidden group shadow-sm"
+          className="mt-20 md:mt-32 p-6 sm:p-8 md:p-12 bg-gray-50 dark:bg-white/5 rounded-[2rem] md:rounded-[3rem] border border-gray-200 dark:border-white/10 relative overflow-hidden group shadow-sm"
         >
           <div className="absolute inset-0 bg-linear-to-r from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
 
-          <h3 className="text-3xl font-black text-center mb-16 tracking-tighter italic text-slate-900 dark:text-white">
+          <h3 className="text-2xl sm:text-3xl font-black text-center mb-10 md:mb-16 tracking-tighter italic text-slate-900 dark:text-white">
             THE <span className="text-purple-600 dark:text-purple-500 uppercase">Workflow</span>
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
               { step: "01", title: "Discovery", desc: "Understanding the 'Why' behind your project." },
               { step: "02", title: "Architecture", desc: "Designing the blueprint for scale." },
