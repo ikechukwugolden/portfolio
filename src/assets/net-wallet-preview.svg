@@ -1,0 +1,50 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="280" y1="120" x2="1280" y2="920" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E1A33" />
+      <stop offset="0.55" stop-color="#091223" />
+      <stop offset="1" stop-color="#050A15" />
+    </linearGradient>
+    <linearGradient id="icon" x1="0" y1="0" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4F8BFF" />
+      <stop offset="1" stop-color="#7F6DFF" />
+    </linearGradient>
+    <linearGradient id="cta" x1="380" y1="0" x2="1220" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4F8BFF" />
+      <stop offset="1" stop-color="#7661FF" />
+    </linearGradient>
+    <filter id="glow" x="0" y="0" width="1600" height="1000" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="90" />
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#030816" />
+  <g filter="url(#glow)">
+    <circle cx="800" cy="340" r="240" fill="#4F8BFF" fill-opacity="0.24" />
+  </g>
+  <rect x="160" y="70" width="1280" height="860" rx="64" fill="url(#bg)" stroke="#243352" stroke-opacity="0.75" />
+
+  <rect x="710" y="140" width="180" height="180" rx="46" fill="url(#icon)" />
+  <text x="800" y="252" text-anchor="middle" fill="#D9E2FF" font-family="Arial, sans-serif" font-weight="700" font-size="84">N</text>
+
+  <text x="800" y="398" text-anchor="middle" fill="#E6ECFF" font-family="Arial, sans-serif" font-weight="700" font-size="86">
+    Net-wallet
+  </text>
+  <text x="800" y="462" text-anchor="middle" fill="#9FAED0" font-family="Arial, sans-serif" font-weight="500" font-size="34">
+    Multi-chain crypto wallet with secure swaps and asset management.
+  </text>
+
+  <g>
+    <rect x="300" y="560" width="460" height="150" rx="28" fill="#111A2E" stroke="#273657" />
+    <text x="338" y="618" fill="#F0F4FF" font-family="Arial, sans-serif" font-weight="700" font-size="34">Self-Custody Security</text>
+    <text x="338" y="662" fill="#8FA0C4" font-family="Arial, sans-serif" font-size="26">Your keys, your crypto.</text>
+  </g>
+  <g>
+    <rect x="840" y="560" width="460" height="150" rx="28" fill="#111A2E" stroke="#273657" />
+    <text x="878" y="618" fill="#F0F4FF" font-family="Arial, sans-serif" font-weight="700" font-size="34">Multi-Chain Support</text>
+    <text x="878" y="662" fill="#8FA0C4" font-family="Arial, sans-serif" font-size="26">Ethereum, BNB, Polygon and more.</text>
+  </g>
+
+  <rect x="380" y="780" width="840" height="96" rx="30" fill="url(#cta)" />
+  <text x="800" y="842" text-anchor="middle" fill="#F7F9FF" font-family="Arial, sans-serif" font-weight="700" font-size="42">View Project</text>
+</svg>

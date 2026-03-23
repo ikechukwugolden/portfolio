@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 
 // Components
 import Header from "./components/Header";
@@ -15,10 +15,25 @@ import CustomCursor from "./components/CustomCursor";
 
 // Helper to fix scroll position on navigation
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
+
   useEffect(() => {
+    if (hash) {
+      const targetId = hash.replace("#", "");
+
+      // Defer to ensure section exists after route render.
+      requestAnimationFrame(() => {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+      return;
+    }
+
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash]);
+
   return null;
 };
 
@@ -35,8 +50,51 @@ const PageWrapper = ({ children }) => (
   </motion.div>
 );
 
+const ScrollProgress = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 110,
+    damping: 26,
+    mass: 0.2,
+  });
+
+  return (
+    <motion.div
+      style={{ scaleX, transformOrigin: "0% 50%" }}
+      className="fixed top-0 left-0 right-0 h-1 bg-linear-to-r from-purple-500 via-pink-500 to-blue-500 z-[120]"
+      aria-hidden="true"
+    />
+  );
+};
+
+const BootLoader = ({ isVisible }) => (
+  <AnimatePresence>
+    {isVisible && (
+      <motion.div
+        initial={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.45 }}
+        className="fixed inset-0 z-[200] flex items-center justify-center bg-white dark:bg-[#030712]"
+      >
+        <motion.div
+          animate={{
+            scale: [1, 1.12, 1],
+            opacity: [0.7, 1, 0.7],
+          }}
+          transition={{ duration: 1.3, repeat: Infinity, ease: "easeInOut" }}
+          className="w-20 h-20 rounded-3xl bg-linear-to-br from-purple-600 to-blue-500 text-white text-2xl font-black tracking-wider flex items-center justify-center shadow-2xl shadow-purple-500/30"
+        >
+          IV
+        </motion.div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+);
+
 const App = () => {
-  // 🟢 Theme Initialization Logic
+  const [isBooting, setIsBooting] = useState(true);
+
+  // Theme initialization
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -48,19 +106,28 @@ const App = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsBooting(false);
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />
-      
-      {/* 🟢 Standardized Wrapper */}
+      <BootLoader isVisible={isBooting} />
+
+      {/* Standardized Wrapper */}
       {/* md:cursor-none hides default cursor for CustomCursor.jsx to take over */}
       <div className="min-h-screen flex flex-col bg-white dark:bg-[#030712] text-slate-900 dark:text-white transition-colors duration-500 selection:bg-purple-500 selection:text-white md:cursor-none">
-        
+        <ScrollProgress />
         <CustomCursor />
         <Header />
 
-        {/* 🟢 Main Content Area */}
-        <main className="pt-20 flex-grow flex flex-col"> 
+        {/* Main Content Area */}
+        <main className="pt-20 flex-grow flex flex-col">
           <AnimatePresence mode="wait">
             <Routes>
               {/* Main Landing Page Stack */}
@@ -79,11 +146,39 @@ const App = () => {
               />
 
               {/* Individual Pages (Optional Routing) */}
-              <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
-              <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
-              <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
-              <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
-              
+              <Route
+                path="/about"
+                element={
+                  <PageWrapper>
+                    <About />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/projects"
+                element={
+                  <PageWrapper>
+                    <Projects />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/services"
+                element={
+                  <PageWrapper>
+                    <Services />
+                  </PageWrapper>
+                }
+              />
+              <Route
+                path="/contact"
+                element={
+                  <PageWrapper>
+                    <Contact />
+                  </PageWrapper>
+                }
+              />
+
               {/* 404 Fallback */}
               <Route path="*" element={<Hero />} />
             </Routes>
@@ -101,7 +196,7 @@ const App = () => {
           aria-label="Chat on WhatsApp"
         >
           <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.481s3.481 5.228 3.481 8.404c0 6.556-5.332 11.888-11.888 11.888-2.01 0-3.987-.508-5.746-1.472l-6.239 1.696zm6.303-4.108l.351.209c1.404.835 3.031 1.276 4.697 1.276 5.178 0 9.388-4.211 9.388-9.388 0-2.508-.977-4.866-2.753-6.641-1.774-1.774-4.132-2.753-6.641-2.753-5.178 0-9.388 4.211-9.388 9.388 0 1.932.589 3.821 1.703 5.432l.23.333-1.01 3.693 3.784-.979z"/>
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.481s3.481 5.228 3.481 8.404c0 6.556-5.332 11.888-11.888 11.888-2.01 0-3.987-.508-5.746-1.472l-6.239 1.696zm6.303-4.108l.351.209c1.404.835 3.031 1.276 4.697 1.276 5.178 0 9.388-4.211 9.388-9.388 0-2.508-.977-4.866-2.753-6.641-1.774-1.774-4.132-2.753-6.641-2.753-5.178 0-9.388 4.211-9.388 9.388 0 1.932.589 3.821 1.703 5.432l.23.333-1.01 3.693 3.784-.979z" />
           </svg>
         </a>
       </div>

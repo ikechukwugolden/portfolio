@@ -2,8 +2,16 @@ import React from "react";
 import { motion } from "framer-motion";
 import victor from "../assets/chatone.png";
 import heroTechBg from "../assets/heroTechBg.jpg";
+import MagneticButton from "./MagneticButton";
 
 const Hero = () => {
+    const scrollToSection = (sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
+
     return (
         <section
             id="home"
@@ -67,21 +75,23 @@ const Hero = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-5 mt-4">
-                        <motion.button 
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                        <MagneticButton
+                            type="button"
+                            onClick={() => scrollToSection("contact")}
+                            data-cursor-label="Contact"
                             className="px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] shadow-2xl text-white bg-purple-600 hover:bg-purple-500 transition-all shadow-purple-500/20"
                         >
                             Hire the architect
-                        </motion.button>
+                        </MagneticButton>
                         
-                        <motion.button 
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                        <MagneticButton
+                            type="button"
+                            onClick={() => scrollToSection("projects")}
+                            data-cursor-label="View"
                             className="px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] border border-black/10 text-slate-900 bg-transparent hover:bg-black/5 dark:border-white/10 dark:text-white dark:bg-white/5 dark:hover:bg-white/10 backdrop-blur-md transition-all"
                         >
                             View Portfolio
-                        </motion.button>
+                        </MagneticButton>
                     </div>
                 </motion.div>
 

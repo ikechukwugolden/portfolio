@@ -25,6 +25,23 @@ const About = () => {
     { name: "Firebase", icon: <SiFirebase />, color: "text-orange-500" },
   ];
 
+  const handleResumeClick = async (event) => {
+    event.preventDefault();
+
+    try {
+      const resumeResponse = await fetch("/resume.pdf", { method: "HEAD" });
+      if (resumeResponse.ok) {
+        window.location.href = "/resume.pdf";
+        return;
+      }
+    } catch {
+      // Fall back to email request if resume file is not present.
+    }
+
+    window.location.href =
+      "mailto:ikechukwuv074@gmail.com?subject=Resume%20Request&body=Hello%20Victor%2C%20please%20share%20your%20latest%20resume.";
+  };
+
   return (
     <section id="about" className="relative w-full transition-colors duration-500 bg-white dark:bg-[#030712] text-slate-900 dark:text-white py-32 px-5 overflow-hidden">
       
@@ -103,6 +120,10 @@ const About = () => {
               {stats.map((stat, i) => (
                 <motion.div
                   key={i}
+                  initial={{ opacity: 0, y: 22 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ delay: i * 0.08, duration: 0.35 }}
                   whileHover={{ y: -5, backgroundColor: "rgba(147, 51, 234, 0.05)" }}
                   className="p-8 bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5 rounded-[2.5rem] flex flex-col items-center text-center transition-all shadow-sm"
                 >
@@ -120,6 +141,10 @@ const About = () => {
                 {skills.map((skill, i) => (
                   <motion.div
                     key={i}
+                    initial={{ opacity: 0, y: 26 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ delay: i * 0.07, duration: 0.35 }}
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5 rounded-2xl hover:border-purple-500/30 transition-all shadow-sm"
                   >
@@ -134,7 +159,7 @@ const About = () => {
             <div className="flex flex-wrap gap-6 items-center pt-8">
               <motion.a 
                 href="/resume.pdf" 
-                download="Victor_Resume.pdf"
+                onClick={handleResumeClick}
                 whileTap={{ scale: 0.95 }}
                 className="px-12 py-6 bg-slate-900 dark:bg-white text-white dark:text-black rounded-3xl font-black uppercase tracking-[0.2em] text-[10px] hover:bg-purple-600 dark:hover:bg-purple-500 dark:hover:text-white transition-all shadow-xl flex items-center justify-center gap-3 cursor-pointer"
               >
@@ -142,7 +167,7 @@ const About = () => {
               </motion.a>
 
               <motion.a 
-                href="/contact" 
+                href="/#contact" 
                 whileHover={{ x: 5 }}
                 className="group flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 dark:text-white cursor-pointer"
               >

@@ -34,6 +34,17 @@ const Header = () => {
 
   const whatsappLink = `https://wa.me/2349045817261`;
 
+  const triggerHaptic = (pattern = 16) => {
+    if (typeof navigator !== "undefined" && typeof navigator.vibrate === "function") {
+      navigator.vibrate(pattern);
+    }
+  };
+
+  const handleThemeToggle = () => {
+    setDarkMode((prev) => !prev);
+    triggerHaptic(18);
+  };
+
   return (
     <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[100%] max-w-7xl z-[100]">
       <div className="bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-[2rem] px-6 h-20 flex items-center justify-between shadow-2xl transition-all duration-500">
@@ -69,8 +80,9 @@ const Header = () => {
         <div className="flex items-center gap-3">
           {/* DARK MODE TOGGLE */}
           <button
-            onClick={() => setDarkMode(!darkMode)}
+            onClick={handleThemeToggle}
             className="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-white/5 text-gray-800 dark:text-yellow-400 hover:scale-110 transition-all border border-transparent dark:border-white/10"
+            aria-label="Toggle dark mode"
           >
             {darkMode ? <FaMoon className="text-purple-600" /> : <FaSun className="text-yellow-400" />}
           </button>
