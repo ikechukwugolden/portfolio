@@ -29,8 +29,6 @@ const Hero = () => {
             id="home"
             className="w-full min-h-screen relative flex items-center justify-center bg-cover bg-center overflow-hidden transition-all duration-500 bg-white dark:bg-[#030712] pt-24 pb-14 sm:pt-28 sm:pb-20"
             style={{
-                // Light mode: no background image (clean white) 
-                // Dark mode: your tech image background
                 backgroundImage: `var(--hero-bg)`,
             }}
         >
@@ -83,8 +81,8 @@ const Hero = () => {
                     </h1>
 
                     <p className="text-gray-500 dark:text-gray-400 text-base sm:text-lg md:text-xl max-w-xl leading-relaxed font-medium">
-                        I am Victor, a Full-Stack Developer specializing in high-performance web experiences.
-                        Turning complex logic into <span className="text-purple-600 dark:text-white italic">effortless beauty.</span>
+                        I am Victor, a Frontend Developer and React specialist based in Aba, Nigeria.
+                        Turning complex product logic into <span className="text-purple-600 dark:text-white italic">fast, accessible interfaces.</span>
                     </p>
 
                     <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-3 sm:gap-5 mt-3 sm:mt-4 w-full sm:w-auto">
@@ -94,7 +92,7 @@ const Hero = () => {
                             data-cursor-label="Contact"
                             className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 rounded-2xl font-black uppercase tracking-[0.18em] sm:tracking-widest text-[9px] sm:text-[10px] shadow-2xl text-white bg-purple-600 hover:bg-purple-500 transition-all shadow-purple-500/20"
                         >
-                            Hire the architect
+                            Let&apos;s Work Together
                         </MagneticButton>
 
                         <MagneticButton

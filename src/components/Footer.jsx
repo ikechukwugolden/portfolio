@@ -1,6 +1,7 @@
 ﻿import React from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaArrowUp, FaEnvelope, FaMapMarkerAlt, FaCircle } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaArrowUp, FaEnvelope, FaMapMarkerAlt, FaCircle, FaDownload } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -9,6 +10,28 @@ const Footer = () => {
 
   const currentYear = new Date().getFullYear();
   const stack = ["React", "Next.js", "Firebase", "Tailwind", "Framer Motion", "Node.js", "MongoDB"];
+  const socialLinks = {
+    github: "https://github.com/ikechukwugolden",
+    linkedin: "https://www.linkedin.com/in/ikechukwu-victor/",
+    twitter: "https://x.com/ikechukwugolden",
+  };
+
+  const handleResumeClick = async (event) => {
+    event.preventDefault();
+
+    try {
+      const resumeResponse = await fetch("/resume.pdf", { method: "HEAD" });
+      if (resumeResponse.ok) {
+        window.location.href = "/resume.pdf";
+        return;
+      }
+    } catch {
+      // Fall back to email request if the PDF is unavailable.
+    }
+
+    window.location.href =
+      "mailto:ikechukwuv074@gmail.com?subject=Resume%20Request&body=Hello%20Victor%2C%20please%20share%20your%20latest%20resume.";
+  };
 
   return (
     <footer className="w-full bg-white dark:bg-[#030712] text-slate-900 dark:text-white pt-16 md:pt-24 pb-10 md:pb-12 px-4 md:px-6 relative overflow-hidden border-t border-gray-200 dark:border-white/5 transition-colors duration-500">
@@ -34,18 +57,31 @@ const Footer = () => {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://github.com/ikechukwugolden"
+                href={socialLinks.github}
                 target="_blank"
                 rel="noreferrer"
                 className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-purple-600 hover:text-white hover:border-purple-500 transition-all duration-300"
+                aria-label="GitHub profile"
               >
                 <FaGithub />
               </a>
               <a
-                href="#"
+                href={socialLinks.linkedin}
+                target="_blank"
+                rel="noreferrer"
                 className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-purple-600 hover:text-white hover:border-purple-500 transition-all duration-300"
+                aria-label="LinkedIn profile"
               >
                 <FaLinkedin />
+              </a>
+              <a
+                href={socialLinks.twitter}
+                target="_blank"
+                rel="noreferrer"
+                className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-purple-600 hover:text-white hover:border-purple-500 transition-all duration-300"
+                aria-label="X profile"
+              >
+                <FaXTwitter />
               </a>
             </div>
           </div>
@@ -86,8 +122,15 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <FaMapMarkerAlt className="text-purple-600 dark:text-purple-500" />
-                <span className="text-sm font-bold text-gray-700 dark:text-gray-300">Abia, Nigeria</span>
+                <span className="text-sm font-bold text-gray-700 dark:text-gray-300">Aba, Nigeria</span>
               </div>
+              <a
+                href="/resume.pdf"
+                onClick={handleResumeClick}
+                className="inline-flex items-center gap-2 mt-2 px-4 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-black text-[10px] font-black uppercase tracking-[0.16em] hover:bg-purple-600 dark:hover:bg-purple-500 dark:hover:text-white transition-colors"
+              >
+                <FaDownload /> Download PDF Resume
+              </a>
             </div>
           </div>
         </div>

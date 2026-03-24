@@ -11,6 +11,7 @@ import {
   FaBriefcase,
   FaEnvelopeOpenText,
   FaArrowRight,
+  FaDownload,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -45,6 +46,8 @@ const Header = () => {
   ];
 
   const whatsappLink = "https://web.whatsapp.com/send?phone=2349045817261&text=Hello%20Victor%2C%20I%20want%20to%20chat%20about%20a%20project.";
+  const resumeFallbackLink =
+    "mailto:ikechukwuv074@gmail.com?subject=Resume%20Request&body=Hello%20Victor%2C%20please%20share%20your%20latest%20resume.";
 
   const triggerHaptic = (pattern = 16) => {
     if (typeof navigator !== "undefined" && typeof navigator.vibrate === "function") {
@@ -60,6 +63,22 @@ const Header = () => {
   const handleMenuToggle = () => {
     setMenuOpen((prev) => !prev);
     triggerHaptic(14);
+  };
+
+  const handleResumeClick = async (event) => {
+    event.preventDefault();
+
+    try {
+      const resumeResponse = await fetch("/resume.pdf", { method: "HEAD" });
+      if (resumeResponse.ok) {
+        window.location.href = "/resume.pdf";
+        return;
+      }
+    } catch {
+      // Fall back to email request.
+    }
+
+    window.location.href = resumeFallbackLink;
   };
 
   useEffect(() => {
@@ -88,7 +107,7 @@ const Header = () => {
             IV
           </div>
           <span className="hidden sm:block text-black dark:text-white text-base lg:text-xl font-black tracking-tighter uppercase italic truncate">
-            Ikechkwu Victor<span className="text-purple-500">.</span>
+            Ikechukwu Victor<span className="text-purple-500">.</span>
           </span>
           <span className="sm:hidden text-black dark:text-white text-sm font-black uppercase tracking-tight">
             Victor<span className="text-purple-500">.</span>
@@ -125,10 +144,27 @@ const Header = () => {
 
           {/* CHAT ME BUTTON */}
           <a
+            href="/resume.pdf"
+            onClick={handleResumeClick}
+            className="hidden lg:flex items-center gap-2 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-900 dark:text-white px-4 py-2.5 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all border border-slate-200 dark:border-white/10"
+          >
+            <FaDownload className="text-xs" />
+            Resume
+          </a>
+
+          <Link
+            to="/#contact"
+            className="hidden md:flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-5 py-2.5 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all shadow-lg shadow-blue-600/20"
+          >
+            <FaEnvelopeOpenText className="text-base" />
+            Let&apos;s Work Together
+          </Link>
+
+          <a
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-2.5 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all shadow-lg shadow-green-500/20"
+            className="hidden xl:flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-2.5 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all shadow-lg shadow-green-500/20"
           >
             <FaWhatsapp className="text-base" />
             Chat
@@ -221,10 +257,26 @@ const Header = () => {
               </nav>
 
               <a
+                href="/resume.pdf"
+                onClick={handleResumeClick}
+                className="mt-4 w-full flex justify-center items-center gap-3 bg-slate-900 dark:bg-white/10 border border-slate-200 dark:border-white/10 text-white dark:text-white py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] transition-colors"
+              >
+                <FaDownload className="text-base" /> Download PDF Resume
+              </a>
+
+              <Link
+                to="/#contact"
+                onClick={() => setMenuOpen(false)}
+                className="mt-3 w-full flex justify-center items-center gap-3 bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] transition-colors"
+              >
+                <FaEnvelopeOpenText className="text-base" /> Let&apos;s Work Together
+              </Link>
+
+              <a
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 w-full flex justify-center items-center gap-3 bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] transition-colors"
+                className="mt-3 w-full flex justify-center items-center gap-3 bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] transition-colors"
               >
                 <FaWhatsapp className="text-base" /> Start WhatsApp Chat
               </a>

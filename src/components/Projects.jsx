@@ -10,6 +10,7 @@ import {
   FaExchangeAlt,
   FaBolt,
   FaHeart,
+  FaUsers,
 } from "react-icons/fa";
 
 import image1 from "../assets/image1.png";
@@ -49,6 +50,16 @@ const projectsData = [
         "Led the frontend experience, interaction patterns, and component architecture for a smooth fintech-grade interface.",
       outcome:
         "Created a launch-ready wallet showcase that communicates trust, speed, and modern product quality for 2026 audiences.",
+    },
+    caseStudy: {
+      problem:
+        "In 2026, personal finances stay fragmented across bank apps, transfers, and cash records. Most users need one clear source of truth to track spending fast.",
+      role:
+        "Sole frontend developer and product designer for the MVP experience, from interaction design to implementation and deployment.",
+      stackChoice:
+        "React was chosen over template-driven alternatives because reusable components and Hook-based state made it easier to ship a real-time dashboard, filtering, and responsive interactions quickly without sacrificing maintainability.",
+      outcome:
+        "Shipped a production-ready MVP that cut manual bookkeeping effort by an estimated 60% and improved perceived speed through optimized rendering and focused UI states.",
     },
     featureCards: [
       {
@@ -99,6 +110,16 @@ const projectsData = [
       outcome:
         "Delivered a reliable academic operations tool that reduces admin overhead and improves attendance visibility.",
     },
+    caseStudy: {
+      problem:
+        "Schools needed to replace error-prone paper attendance workflows with a real-time digital process teachers could trust daily.",
+      role:
+        "Primary full-stack contributor in a small project setup, owning React UI architecture, Firebase integration, and reporting dashboards.",
+      stackChoice:
+        "React was selected for predictable component composition and rapid iteration of role-based interfaces, while Firebase accelerated secure realtime sync and data persistence.",
+      outcome:
+        "Reduced attendance logging friction for staff and enabled instant visibility into attendance trends, removing manual report collation delays.",
+    },
   },
   {
     id: 3,
@@ -125,6 +146,16 @@ const projectsData = [
         "Implemented UI system, listing flow, and Firebase-backed service data management for quick content updates.",
       outcome:
         "Produced a scalable service platform concept that makes local hiring more efficient on web and mobile.",
+    },
+    caseStudy: {
+      problem:
+        "Clients struggled to quickly find trusted local providers while providers lacked a structured way to present services online.",
+      role:
+        "Lead frontend engineer working with product requirements to deliver listing discovery, service detail flows, and mobile-first booking UX.",
+      stackChoice:
+        "React enabled modular search and listing interfaces with consistent state handling, making it easier to refine conversion paths during user-flow testing.",
+      outcome:
+        "Delivered a responsive marketplace MVP that improved service discovery speed and gave providers a more credible digital storefront.",
     },
   },
   {
@@ -224,11 +255,25 @@ const ProjectCard = ({ project, index, onPreview, liked, onToggleLike }) => (
       type="button"
       onClick={() => onPreview(project)}
       data-cursor-label="Preview"
-    className="relative block w-full h-52 sm:h-56 text-left"
+      className="relative block w-full h-52 sm:h-56 text-left bg-slate-900"
       aria-label={`Preview ${project.title}`}
     >
-      <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-      <div className="absolute inset-0 bg-linear-to-t from-black/65 via-black/15 to-transparent" />
+      <div className="absolute inset-0 p-2.5 sm:p-3 pointer-events-none">
+        <div className="h-full w-full rounded-2xl overflow-hidden border border-white/20 bg-slate-950 shadow-2xl">
+          <div className="h-7 px-3 border-b border-white/10 bg-slate-900/90 flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-rose-400" />
+            <span className="w-2 h-2 rounded-full bg-amber-300" />
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            <span className="ml-2 text-[8px] uppercase tracking-[0.2em] text-slate-300">Live Preview</span>
+          </div>
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-[calc(100%-1.75rem)] object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
+      </div>
+      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
       <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/35 border border-white/20 text-white text-[10px] font-bold uppercase tracking-[0.16em]">
         {project.type}
       </div>
@@ -282,9 +327,9 @@ const ProjectCard = ({ project, index, onPreview, liked, onToggleLike }) => (
           type="button"
           onClick={() => onPreview(project)}
           className="flex-1 sm:flex-none min-w-[120px] px-4 py-3 rounded-xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors text-[10px] font-black uppercase tracking-[0.12em]"
-          aria-label={`Full breakdown for ${project.title}`}
+          aria-label={`${project.caseStudy ? "View case study" : "View full breakdown"} for ${project.title}`}
         >
-          Breakdown
+          {project.caseStudy ? "View Case Study" : "Breakdown"}
         </button>
         <a
           href={project.github}
@@ -399,14 +444,22 @@ const Projects = () => {
                 type="button"
                 onClick={() => setActiveProject(featuredProject)}
                 data-cursor-label="Open"
-                className="lg:col-span-6 rounded-[1.6rem] overflow-hidden border border-white/15 h-[280px] md:h-[360px] text-left"
+                className="lg:col-span-6 rounded-[1.6rem] overflow-hidden border border-white/15 h-[280px] md:h-[360px] text-left p-3 md:p-4 bg-black/20"
                 aria-label={`Preview ${featuredProject.title}`}
               >
-                <img
-                  src={featuredProject.image}
-                  alt={featuredProject.title}
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                />
+                <div className="w-full h-full rounded-2xl overflow-hidden border border-white/15 bg-slate-950">
+                  <div className="h-8 px-3 border-b border-white/10 bg-slate-900/85 flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-rose-400" />
+                    <span className="w-2 h-2 rounded-full bg-amber-300" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    <span className="ml-2 text-[8px] uppercase tracking-[0.2em] text-slate-300">Product Demo</span>
+                  </div>
+                  <img
+                    src={featuredProject.image}
+                    alt={featuredProject.title}
+                    className="w-full h-[calc(100%-2rem)] object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </div>
               </button>
 
               <div className="lg:col-span-6 flex flex-col gap-5">
@@ -458,7 +511,7 @@ const Projects = () => {
                     onClick={() => setActiveProject(featuredProject)}
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/20 text-white/95 font-black text-[11px] uppercase tracking-[0.16em] hover:bg-white/10 transition-all"
                   >
-                    Full Breakdown <FaArrowRight className="text-xs" />
+                    View Case Study <FaArrowRight className="text-xs" />
                   </button>
                   <button
                     type="button"
@@ -561,8 +614,16 @@ const Projects = () => {
               onClick={(event) => event.stopPropagation()}
             className="w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-[2rem] bg-white dark:bg-[#081023] border border-slate-300 dark:border-slate-700 shadow-2xl"
             >
-              <div className="relative">
-                <img src={activeProject.image} alt={activeProject.title} className="w-full h-[240px] md:h-[420px] object-cover" />
+              <div className="relative p-4 md:p-5 bg-slate-900/90">
+                <div className="rounded-2xl overflow-hidden border border-white/10 bg-slate-950">
+                  <div className="h-8 px-3 border-b border-white/10 bg-slate-900/90 flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-rose-400" />
+                    <span className="w-2 h-2 rounded-full bg-amber-300" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    <span className="ml-2 text-[8px] uppercase tracking-[0.2em] text-slate-300">Case Study Mockup</span>
+                  </div>
+                  <img src={activeProject.image} alt={activeProject.title} className="w-full h-[240px] md:h-[420px] object-cover" />
+                </div>
                 <button
                   type="button"
                   onClick={() => setActiveProject(null)}
@@ -590,25 +651,42 @@ const Projects = () => {
                 <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">{activeProject.description}</p>
 
                 <div className="mb-6">
-                  <h4 className="text-[11px] uppercase tracking-[0.2em] font-black text-slate-500 dark:text-slate-400 mb-3">Project Breakdown</h4>
+                  <h4 className="text-[11px] uppercase tracking-[0.2em] font-black text-slate-500 dark:text-slate-400 mb-3">
+                    {activeProject.caseStudy ? "Case Study" : "Project Breakdown"}
+                  </h4>
                   <div className="grid sm:grid-cols-2 gap-2 mb-3">
                     <p className="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/70 px-3 py-3 text-sm text-slate-700 dark:text-slate-200">
-                      <span className="block text-[10px] font-black uppercase tracking-[0.14em] text-blue-700 dark:text-blue-300 mb-1">Challenge</span>
-                      {activeProject.breakdown.challenge}
+                      <span className="block text-[10px] font-black uppercase tracking-[0.14em] text-blue-700 dark:text-blue-300 mb-1">
+                        {activeProject.caseStudy ? "Problem" : "Challenge"}
+                      </span>
+                      {activeProject.caseStudy ? activeProject.caseStudy.problem : activeProject.breakdown.challenge}
                     </p>
                     <p className="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/70 px-3 py-3 text-sm text-slate-700 dark:text-slate-200">
-                      <span className="block text-[10px] font-black uppercase tracking-[0.14em] text-blue-700 dark:text-blue-300 mb-1">Solution</span>
-                      {activeProject.breakdown.solution}
+                      <span className="block text-[10px] font-black uppercase tracking-[0.14em] text-blue-700 dark:text-blue-300 mb-1">
+                        {activeProject.caseStudy ? "Your Role" : "Solution"}
+                      </span>
+                      {activeProject.caseStudy ? activeProject.caseStudy.role : activeProject.breakdown.solution}
                     </p>
                     <p className="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/70 px-3 py-3 text-sm text-slate-700 dark:text-slate-200">
-                      <span className="block text-[10px] font-black uppercase tracking-[0.14em] text-blue-700 dark:text-blue-300 mb-1">My Role</span>
-                      {activeProject.breakdown.role}
+                      <span className="block text-[10px] font-black uppercase tracking-[0.14em] text-blue-700 dark:text-blue-300 mb-1">
+                        {activeProject.caseStudy ? "Tech Stack Decision" : "My Role"}
+                      </span>
+                      {activeProject.caseStudy ? activeProject.caseStudy.stackChoice : activeProject.breakdown.role}
                     </p>
                     <p className="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/70 px-3 py-3 text-sm text-slate-700 dark:text-slate-200">
                       <span className="block text-[10px] font-black uppercase tracking-[0.14em] text-blue-700 dark:text-blue-300 mb-1">Outcome</span>
-                      {activeProject.breakdown.outcome}
+                      {activeProject.caseStudy ? activeProject.caseStudy.outcome : activeProject.breakdown.outcome}
                     </p>
                   </div>
+
+                  {activeProject.caseStudy && (
+                    <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-blue-50/70 dark:bg-blue-950/30 px-4 py-3 text-sm text-slate-700 dark:text-slate-200 mb-3">
+                      <span className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.14em] text-blue-700 dark:text-blue-300 mb-1">
+                        <FaUsers /> Team Context
+                      </span>
+                      <p>This case study documents end-to-end product thinking, technical decisions, and measurable delivery impact.</p>
+                    </div>
+                  )}
 
                   <h5 className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-500 dark:text-slate-400 mb-2">Key Highlights</h5>
                   <div className="grid sm:grid-cols-2 gap-2">

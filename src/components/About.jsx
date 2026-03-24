@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import victor1 from "../assets/CHAT.png";
+import victorHeadshot from "../assets/CHAT.png";
 import {
   FaReact,
   FaCode,
@@ -22,7 +22,7 @@ const About = () => {
     { number: "2+", label: "Years Experience", icon: <FaCode /> },
     { number: "50+", label: "Projects", icon: <FaRocket /> },
     { number: "100%", label: "Satisfaction", icon: <FaLightbulb /> },
-    { number: "∞", label: "Passion", icon: <FaReact /> },
+    { number: "8", label: "Passion", icon: <FaReact /> },
   ];
 
   const skills = [
@@ -33,6 +33,12 @@ const About = () => {
     { name: "JS ES6", icon: <SiJavascript />, color: "text-yellow-400" },
     { name: "Firebase", icon: <SiFirebase />, color: "text-orange-500" },
   ];
+
+  const superpower =
+    "I specialize in translating complex product logic into clear, fast, and accessible React interfaces that non-technical users can trust immediately.";
+
+  const careerGoal =
+    "In my next role, I want to help a product team ship high-impact frontend experiences that improve daily decisions for thousands of users.";
 
   const handleResumeClick = async (event) => {
     event.preventDefault();
@@ -82,7 +88,7 @@ const About = () => {
             SOULS
           </h2>
           <p className="text-gray-500 font-medium uppercase tracking-[0.16em] sm:tracking-[0.5em] text-[10px] sm:text-xs">
-            Based in Lagos, Nigeria • Working Worldwide
+            Frontend Developer | React Expert | Aba, Nigeria
           </p>
         </motion.div>
 
@@ -97,8 +103,8 @@ const About = () => {
             <div className="relative bg-white dark:bg-black rounded-[2.5rem] p-3 border border-gray-100 dark:border-white/10 overflow-hidden shadow-2xl">
               <motion.img
                 whileHover={{ scale: 1.03 }}
-                src={victor1}
-                alt="Victor"
+                src={victorHeadshot}
+                alt="Ikechukwu Victor professional headshot"
                 className="rounded-[2rem] w-full h-[420px] sm:h-[540px] md:h-[600px] object-cover grayscale-[10%] dark:grayscale-[30%] hover:grayscale-0 transition-all duration-700"
               />
 
@@ -119,13 +125,24 @@ const About = () => {
               className="space-y-6"
             >
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight text-slate-900 dark:text-white">
-                "Every line of code is an <span className="text-purple-600 dark:text-purple-500">opportunity</span> to create something extraordinary."
+                Building reliable products where <span className="text-purple-600 dark:text-purple-500">clarity meets performance.</span>
               </h3>
               <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg leading-relaxed font-medium">
-                I am <span className="text-slate-900 dark:text-white font-bold">Victor</span>, a specialized Full Stack Engineer. I specialize in the
-                <span className="text-purple-600 dark:text-purple-400 font-bold italic"> "Intersection of Logic and Beauty."</span> I do not just solve
-                problems; I design solutions that people actually enjoy using.
+                I am <span className="text-slate-900 dark:text-white font-bold">Victor</span>, a frontend-focused full-stack engineer. I ship products
+                that are technically robust and easy to use, with strong attention to UI detail, maintainable architecture, and delivery speed.
               </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="rounded-[2rem] border border-purple-200/60 dark:border-purple-500/20 bg-purple-50/50 dark:bg-purple-500/10 p-6 sm:p-8"
+            >
+              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-purple-600 dark:text-purple-300 mb-2">Superpower</p>
+              <p className="text-base sm:text-lg text-slate-700 dark:text-slate-200 leading-relaxed font-semibold">{superpower}</p>
+              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-purple-600 dark:text-purple-300 mt-6 mb-2">Career Goal</p>
+              <p className="text-sm sm:text-base text-slate-700 dark:text-slate-200 leading-relaxed">{careerGoal}</p>
             </motion.div>
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
@@ -173,7 +190,7 @@ const About = () => {
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto px-8 sm:px-12 py-5 sm:py-6 bg-slate-900 dark:bg-white text-white dark:text-black rounded-3xl font-black uppercase tracking-[0.16em] sm:tracking-[0.2em] text-[10px] hover:bg-purple-600 dark:hover:bg-purple-500 dark:hover:text-white transition-all shadow-xl flex items-center justify-center gap-3 cursor-pointer"
               >
-                <FaDownload className="text-lg" /> Get Resume
+                <FaDownload className="text-lg" /> Download PDF Resume
               </motion.a>
 
               <motion.a
@@ -181,7 +198,7 @@ const About = () => {
                 whileHover={{ x: 5 }}
                 className="group flex items-center justify-center sm:justify-start gap-4 text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 dark:text-white cursor-pointer"
               >
-                Let us Build <FaPaperPlane className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform text-purple-600 dark:text-purple-500 text-lg" />
+                Let&apos;s Work Together <FaPaperPlane className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform text-purple-600 dark:text-purple-500 text-lg" />
               </motion.a>
             </div>
           </div>
@@ -192,3 +209,4 @@ const About = () => {
 };
 
 export default About;
+

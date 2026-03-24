@@ -141,8 +141,8 @@ const Contact = () => {
     {
       icon: <FaMapMarkerAlt />,
       title: "Location",
-      info: "Abia, Nigeria",
-      link: "https://maps.google.com/?q=Abia+Nigeria",
+      info: "Aba, Nigeria",
+      link: "https://maps.google.com/?q=Aba+Nigeria",
       color: "text-pink-500",
     },
   ];
@@ -169,6 +169,12 @@ const Contact = () => {
             LET'S <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-600 to-blue-500 dark:from-purple-400 dark:to-blue-400">SYNC</span> UP
           </h2>
           <p className="text-gray-500 dark:text-gray-400 font-medium uppercase tracking-[0.16em] sm:tracking-[0.4em] text-[10px]">Worldwide Collaboration Available</p>
+          <a
+            href="mailto:ikechukwuv074@gmail.com?subject=Let%27s%20Work%20Together&body=Hi%20Victor%2C%20I%20would%20like%20to%20work%20with%20you."
+            className="mt-8 inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-xl shadow-blue-600/20 transition-colors"
+          >
+            Let&apos;s Work Together <FaPaperPlane />
+          </a>
         </motion.div>
 
         <div className="grid lg:grid-cols-12 gap-8 md:gap-12">
@@ -200,7 +206,7 @@ const Contact = () => {
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-4">
                   <FaClock className="text-purple-600 dark:text-purple-400" />
-                  <span className="text-[10px] font-black uppercase tracking-widest text-purple-600 dark:text-purple-400">Abia, Nigeria</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-purple-600 dark:text-purple-400">Aba, Nigeria</span>
                 </div>
                 <h4 className="text-3xl sm:text-4xl font-black tracking-tighter text-gray-800 dark:text-white mb-2">{time || "Syncing..."}</h4>
                 <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">GMT +1 (West Africa Time)</p>
