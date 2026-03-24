@@ -1,5 +1,17 @@
 import { useState, useEffect } from "react";
-import { FaWhatsapp, FaSun, FaMoon, FaTimes, FaBars } from "react-icons/fa";
+import {
+  FaWhatsapp,
+  FaSun,
+  FaMoon,
+  FaTimes,
+  FaBars,
+  FaHome,
+  FaUserAlt,
+  FaCubes,
+  FaBriefcase,
+  FaEnvelopeOpenText,
+  FaArrowRight,
+} from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -25,11 +37,11 @@ const Header = () => {
   }, [darkMode]);
 
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Projects", path: "/projects" },
-    { name: "Contact", path: "/contact" },
+    { name: "Home", path: "/", hint: "Main landing page", icon: FaHome },
+    { name: "About", path: "/about", hint: "Background and skills", icon: FaUserAlt },
+    { name: "Services", path: "/services", hint: "What I offer", icon: FaCubes },
+    { name: "Projects", path: "/projects", hint: "Case studies and work", icon: FaBriefcase },
+    { name: "Contact", path: "/contact", hint: "Start a conversation", icon: FaEnvelopeOpenText },
   ];
 
   const whatsappLink = "https://web.whatsapp.com/send?phone=2349045817261&text=Hello%20Victor%2C%20I%20want%20to%20chat%20about%20a%20project.";
@@ -44,6 +56,27 @@ const Header = () => {
     setDarkMode((prev) => !prev);
     triggerHaptic(18);
   };
+
+  const handleMenuToggle = () => {
+    setMenuOpen((prev) => !prev);
+    triggerHaptic(14);
+  };
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!menuOpen) {
+      document.body.style.overflow = "";
+      return;
+    }
+
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   return (
     <header className="fixed top-0 sm:top-4 left-1/2 -translate-x-1/2 w-[calc(100%-1rem)] sm:w-full max-w-7xl z-[100]">
@@ -103,8 +136,8 @@ const Header = () => {
 
           {/* MOBILE MENU TOGGLE */}
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden w-10 h-10 flex items-center justify-center text-black dark:text-white text-xl"
+            onClick={handleMenuToggle}
+            className="md:hidden w-10 h-10 flex items-center justify-center text-black dark:text-white text-xl rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10"
             aria-label="Toggle menu"
           >
             {menuOpen ? <FaTimes /> : <FaBars />}
@@ -115,31 +148,88 @@ const Header = () => {
       {/* MOBILE MENU */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="absolute top-20 sm:top-24 left-0 w-full bg-white dark:bg-[#0d0d0d] border border-black/5 dark:border-white/10 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 flex flex-col items-center gap-5 sm:gap-6 shadow-2xl md:hidden z-[-1]"
-          >
-            {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                to={link.path} 
-                onClick={() => setMenuOpen(false)}
-                className="text-xl sm:text-2xl font-black uppercase tracking-tighter text-black dark:text-white hover:text-purple-500 transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex justify-center items-center gap-3 bg-green-500 text-white py-5 rounded-2xl font-black uppercase tracking-widest"
+          <>
+            <motion.button
+              type="button"
+              aria-label="Close menu overlay"
+              onClick={() => setMenuOpen(false)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-slate-950/35 backdrop-blur-[2px] md:hidden z-[108]"
+            />
+
+            <motion.div
+              initial={{ opacity: 0, y: -22, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -18, scale: 0.97 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="fixed top-20 sm:top-24 left-2 right-2 sm:left-4 sm:right-4 bg-white/92 dark:bg-[#0d0f17]/95 backdrop-blur-2xl border border-black/5 dark:border-white/10 rounded-[1.8rem] sm:rounded-[2.2rem] p-4 sm:p-5 shadow-2xl md:hidden z-[110]"
             >
-              <FaWhatsapp className="text-xl" /> Let's Talk
-            </a>
-          </motion.div>
+              <div className="flex items-center justify-between mb-3 sm:mb-4 px-1">
+                <p className="text-[10px] font-black uppercase tracking-[0.25em] text-purple-600 dark:text-purple-400">Navigation</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Mobile Menu</p>
+              </div>
+
+              <nav className="space-y-2">
+                {navLinks.map((link, index) => {
+                  const Icon = link.icon;
+                  const isActive = location.pathname === link.path;
+
+                  return (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.02 * index }}
+                    >
+                      <Link
+                        to={link.path}
+                        onClick={() => setMenuOpen(false)}
+                        className={`group flex items-center justify-between gap-3 p-3 rounded-2xl border transition-all ${
+                          isActive
+                            ? "bg-slate-900 text-white border-slate-900 dark:bg-white dark:text-black dark:border-white shadow-lg"
+                            : "bg-slate-50/90 dark:bg-white/5 text-slate-900 dark:text-white border-slate-200 dark:border-white/10 hover:border-purple-400/40"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div
+                            className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
+                              isActive
+                                ? "bg-white/15 text-white dark:bg-black/10 dark:text-black"
+                                : "bg-white dark:bg-slate-900 text-purple-600 dark:text-purple-400 border border-slate-200 dark:border-white/10"
+                            }`}
+                          >
+                            <Icon />
+                          </div>
+                          <div className="min-w-0">
+                            <p className="text-sm font-black uppercase tracking-[0.12em]">{link.name}</p>
+                            <p
+                              className={`text-[10px] uppercase tracking-[0.12em] truncate ${
+                                isActive ? "text-white/70 dark:text-black/70" : "text-slate-500 dark:text-slate-400"
+                              }`}
+                            >
+                              {link.hint}
+                            </p>
+                          </div>
+                        </div>
+                        <FaArrowRight className={`${isActive ? "opacity-90" : "opacity-30 group-hover:opacity-70"} transition-opacity`} />
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </nav>
+
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 w-full flex justify-center items-center gap-3 bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] transition-colors"
+              >
+                <FaWhatsapp className="text-base" /> Start WhatsApp Chat
+              </a>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>
