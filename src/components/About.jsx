@@ -1,5 +1,6 @@
 ﻿import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { jsPDF } from "jspdf";
 import victorHeadshot from "../assets/CHAT.png";
 import {
   FaReact,
@@ -40,21 +41,145 @@ const About = () => {
   const careerGoal =
     "In my next role, I want to help a product team ship high-impact frontend experiences that improve daily decisions for thousands of users.";
 
-  const handleResumeClick = async (event) => {
+  const handleResumeClick = (event) => {
     event.preventDefault();
 
-    try {
-      const resumeResponse = await fetch("/resume.pdf", { method: "HEAD" });
-      if (resumeResponse.ok) {
-        window.location.href = "/resume.pdf";
-        return;
-      }
-    } catch {
-      // Fall back to email request if resume file is not present.
-    }
+    // Create a new PDF document
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: "a4",
+    });
 
-    window.location.href =
-      "mailto:ikechukwuv074@gmail.com?subject=Resume%20Request&body=Hello%20Victor%2C%20please%20share%20your%20latest%20resume.";
+    // Set colors and fonts
+    const primaryColor = "#9333ea"; // purple-600
+    const textColor = "#1e293b"; // slate-900
+    const lightGray = "#64748b"; // slate-500
+    let yPosition = 20;
+
+    // Title
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(24);
+    pdf.setTextColor(primaryColor);
+    pdf.text("IKECHUKWU VICTOR", 20, yPosition);
+
+    yPosition += 12;
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(10);
+    pdf.setTextColor(lightGray);
+    pdf.text("Frontend Developer | React Expert | Aba, Nigeria", 20, yPosition);
+    pdf.text("ikechukwuv074@gmail.com", 20, yPosition + 6);
+
+    yPosition += 18;
+    pdf.setDrawColor(primaryColor);
+    pdf.setLineWidth(0.5);
+    pdf.line(20, yPosition, 190, yPosition);
+
+    yPosition += 10;
+
+    // Professional Summary
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(12);
+    pdf.setTextColor(textColor);
+    pdf.text("PROFESSIONAL SUMMARY", 20, yPosition);
+
+    yPosition += 8;
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(10);
+    pdf.setTextColor(textColor);
+    const summary =
+      "Frontend-focused full-stack engineer specializing in translating complex product logic into clear, fast, and accessible React interfaces. 2+ years of experience building reliable, user-centric digital products with strong attention to UI detail, maintainable architecture, and delivery speed.";
+    const summaryLines = pdf.splitTextToSize(summary, 170);
+    pdf.text(summaryLines, 20, yPosition);
+    yPosition += summaryLines.length * 5 + 5;
+
+    // Core Skills
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(12);
+    pdf.setTextColor(textColor);
+    pdf.text("CORE SKILLS", 20, yPosition);
+
+    yPosition += 8;
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(10);
+    pdf.setTextColor(textColor);
+    const skills = ["React.js", "Node.js", "Tailwind CSS", "JavaScript (ES6+)", "Framer Motion", "Firebase", "Full-Stack Development", "UI/UX Development"];
+    const skillsText = skills.join(" • ");
+    const skillsLines = pdf.splitTextToSize(skillsText, 170);
+    pdf.text(skillsLines, 20, yPosition);
+    yPosition += skillsLines.length * 5 + 5;
+
+    // Experience Section
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(12);
+    pdf.setTextColor(textColor);
+    pdf.text("EXPERIENCE", 20, yPosition);
+
+    yPosition += 8;
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(10);
+    pdf.setTextColor(textColor);
+    pdf.text("Senior Frontend Engineer - Full Stack Developer", 20, yPosition);
+
+    yPosition += 6;
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(9);
+    pdf.setTextColor(lightGray);
+    pdf.text("Self-Employed | 2022 - Present", 20, yPosition);
+
+    yPosition += 7;
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(9);
+    pdf.setTextColor(textColor);
+    const expText =
+      "Developed 50+ web applications using React and modern JavaScript frameworks. Designed and implemented responsive, accessible user interfaces. Built full-stack solutions with Node.js backend services. Maintained 100% client satisfaction through quality delivery and clear communication.";
+    const expLines = pdf.splitTextToSize(expText, 170);
+    pdf.text(expLines, 20, yPosition);
+    yPosition += expLines.length * 4 + 5;
+
+    // Education
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(12);
+    pdf.setTextColor(textColor);
+    pdf.text("EDUCATION", 20, yPosition);
+
+    yPosition += 8;
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(10);
+    pdf.setTextColor(textColor);
+    pdf.text("Full Stack Web Development Bootcamp", 20, yPosition);
+
+    yPosition += 6;
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(9);
+    pdf.setTextColor(lightGray);
+    pdf.text("Online - Completed 2022", 20, yPosition);
+
+    yPosition += 10;
+
+    // Career Goal
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(12);
+    pdf.setTextColor(textColor);
+    pdf.text("CAREER GOAL", 20, yPosition);
+
+    yPosition += 8;
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(9);
+    pdf.setTextColor(textColor);
+    const goalText =
+      "Seeking a full-stack role to help a product team ship high-impact frontend experiences that improve daily decisions for thousands of users while maintaining technical excellence and code quality.";
+    const goalLines = pdf.splitTextToSize(goalText, 170);
+    pdf.text(goalLines, 20, yPosition);
+
+    // Footer
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(8);
+    pdf.setTextColor("#999999");
+    pdf.text("Portfolio: victorportfolio.com | Available for Full-Stack Roles", 20, 280);
+
+    // Save the PDF
+    pdf.save("Ikechukwu-Victor-Resume.pdf");
   };
 
   return (
@@ -184,14 +309,13 @@ const About = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 items-stretch sm:items-center pt-4 sm:pt-8">
-              <motion.a
-                href="/resume.pdf"
+              <motion.button
                 onClick={handleResumeClick}
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto px-8 sm:px-12 py-5 sm:py-6 bg-slate-900 dark:bg-white text-white dark:text-black rounded-3xl font-black uppercase tracking-[0.16em] sm:tracking-[0.2em] text-[10px] hover:bg-purple-600 dark:hover:bg-purple-500 dark:hover:text-white transition-all shadow-xl flex items-center justify-center gap-3 cursor-pointer"
               >
                 <FaDownload className="text-lg" /> Download PDF Resume
-              </motion.a>
+              </motion.button>
 
               <motion.a
                 href="/#contact"

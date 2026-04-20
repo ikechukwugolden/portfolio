@@ -131,7 +131,7 @@ const Hero = () => {
                             <img
                                 src={victor}
                                 alt="Victor"
-                                className="w-52 h-64 sm:w-64 sm:h-80 md:w-80 md:h-[450px] object-cover rounded-[2rem] border-2 border-black/10 dark:border-white/10 shadow-2xl grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
+                                className="w-52 h-64 sm:w-64 sm:h-80 md:w-80 md:h-[450px] object-cover rounded-[2rem] border-2 border-black/10 dark:border-white/10 shadow-2xl grayscale-0 md:grayscale-[20%] md:group-hover:grayscale-0 transition-all duration-700"
                             />
                         </motion.div>
 
