@@ -35,149 +35,160 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-gradient-to-b from-gray-900 via-gray-900 to-black text-white py-16 overflow-hidden">
+    <footer className="relative bg-gradient-to-b from-slate-950 via-slate-900 to-black text-white overflow-hidden">
       {/* Gradient Background Effects */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 left-1/4 w-80 h-80 bg-purple-500 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-500 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4">
-        {/* Top Section - Branding & Social */}
+      {/* Top Divider */}
+      <div className="relative z-10 border-t border-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
+
+      <div className="relative z-20 container mx-auto px-6 py-20">
+        {/* Main Content Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 pb-8 border-b border-gray-700"
+          className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {/* Brand */}
-          <motion.div className="text-center md:text-left" variants={itemVariants}>
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2">
-              Ikechukwu Victor
-            </h2>
-            <p className="text-gray-400 text-sm">Crafting high-performance digital experiences.</p>
+          {/* Brand Section */}
+          <motion.div className="md:col-span-2 space-y-4" variants={itemVariants}>
+            <div>
+              <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+                IV
+              </h2>
+              <p className="text-xl font-semibold text-white">Ikechukwu Victor</p>
+              <p className="text-gray-400 text-sm mt-2">Frontend Developer & UI/UX Specialist</p>
+            </div>
+            
+            <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
+              Crafting high-performance digital experiences with modern technologies and creative design solutions.
+            </p>
             
             {/* Availability Badge */}
             <motion.div
-              className="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/50 px-4 py-2 rounded-full backdrop-blur"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500/20 to-green-500/20 border border-emerald-500/50 px-4 py-2 rounded-full backdrop-blur w-fit"
               whileHover={{ scale: 1.05 }}
             >
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-              <span className="text-xs font-semibold text-green-300">Available for Work</span>
+              <span className="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse"></span>
+              <span className="text-xs font-semibold text-emerald-300">Available for Collaboration</span>
             </motion.div>
           </motion.div>
 
           {/* Quick Links */}
-          <motion.div className="text-center" variants={itemVariants}>
-            <h3 className="text-lg font-semibold mb-4 text-gray-200">Quick Links</h3>
-            <div className="flex flex-col space-y-2">
+          <motion.div className="space-y-4" variants={itemVariants}>
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-gray-300">Navigation</h3>
+            <div className="space-y-3">
               {quickLinks.map((link) => (
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  className="text-gray-400 hover:text-purple-400 transition-colors text-sm"
-                  whileHover={{ x: 5 }}
+                  className="block text-gray-400 hover:text-purple-400 transition-colors text-sm font-medium"
+                  whileHover={{ x: 4 }}
                 >
-                  → {link.label}
+                  {link.label}
                 </motion.a>
               ))}
             </div>
           </motion.div>
 
-          {/* Social Links */}
-          <motion.div className="text-center md:text-right" variants={itemVariants}>
-            <h3 className="text-lg font-semibold mb-4 text-gray-200">Connect</h3>
-            <div className="flex justify-center md:justify-end space-x-4">
-              <motion.a
-                whileHover={{ scale: 1.2, rotate: 10 }}
-                whileTap={{ scale: 0.95 }}
-                href="https://github.com/ikechukwugolden"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-gradient-to-br from-gray-700 to-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:from-purple-600 hover:to-purple-700 hover:text-white transition-all"
-              >
-                <FaGithub size={20} />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.2, rotate: 10 }}
-                whileTap={{ scale: 0.95 }}
-                href="https://www.linkedin.com/in/ikechukwu-victor/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-gradient-to-br from-gray-700 to-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:from-blue-600 hover:to-blue-700 hover:text-white transition-all"
-              >
-                <FaLinkedin size={20} />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.2, rotate: 10 }}
-                whileTap={{ scale: 0.95 }}
-                href="mailto:ikechukwuv074@gmail.com"
-                className="w-10 h-10 bg-gradient-to-br from-gray-700 to-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:from-red-600 hover:to-red-700 hover:text-white transition-all"
-              >
-                <FaEnvelope size={20} />
-              </motion.a>
+          {/* Social & Tech */}
+          <motion.div className="space-y-6" variants={itemVariants}>
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-gray-300 mb-4">Connect</h3>
+              <div className="flex gap-3">
+                <motion.a
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="https://github.com/ikechukwugolden"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 bg-gradient-to-br from-purple-600/30 to-blue-600/30 hover:from-purple-600 hover:to-blue-600 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all border border-purple-500/20 hover:border-purple-500/50"
+                >
+                  <FaGithub size={18} />
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="https://www.linkedin.com/in/ikechukwu-victor/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 bg-gradient-to-br from-blue-600/30 to-cyan-600/30 hover:from-blue-600 hover:to-cyan-600 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all border border-blue-500/20 hover:border-blue-500/50"
+                >
+                  <FaLinkedin size={18} />
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="mailto:ikechukwuv074@gmail.com"
+                  className="w-9 h-9 bg-gradient-to-br from-rose-600/30 to-pink-600/30 hover:from-rose-600 hover:to-pink-600 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all border border-rose-500/20 hover:border-rose-500/50"
+                >
+                  <FaEnvelope size={18} />
+                </motion.a>
+              </div>
+            </div>
+
+            {/* Tech Stack Section - Under Connect */}
+            <div className="pt-4 border-t border-gray-700/50">
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-gray-300 mb-4">Built With</h3>
+              <div className="flex gap-3 flex-wrap">
+                {techStack.map((tech) => {
+                  const Icon = tech.icon;
+                  return (
+                    <motion.div
+                      key={tech.label}
+                      className="flex flex-col items-center"
+                      whileHover={{ y: -3 }}
+                    >
+                      <div className="p-2 rounded-md bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 hover:border-gray-600/50 transition-all mb-1">
+                        <Icon size={18} className={`${tech.color} transition-all`} />
+                      </div>
+                      <span className="text-xs text-gray-500 font-medium">{tech.label}</span>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
           </motion.div>
         </motion.div>
 
-        {/* Tech Stack Section */}
-        <motion.div
-          className="mb-12 pb-8 border-b border-gray-700"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <h3 className="text-center text-lg font-semibold mb-6 text-gray-200">Built With Modern Tech</h3>
-          <div className="flex flex-wrap justify-center gap-6">
-            {techStack.map((tech) => {
-              const Icon = tech.icon;
-              return (
-                <motion.div
-                  key={tech.label}
-                  className="flex flex-col items-center"
-                  variants={itemVariants}
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="p-3 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors mb-2">
-                    <Icon size={28} className={tech.color} />
-                  </div>
-                  <span className="text-xs text-gray-400">{tech.label}</span>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
+        {/* Divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-12"></div>
 
         {/* Bottom Section */}
         <motion.div
-          className="text-center space-y-6"
+          className="space-y-6 text-center"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.div variants={itemVariants}>
-            <p className="text-gray-500 text-sm">
-              © {currentYear} Ikechukwu Victor. All rights reserved. | Based in Aba, Nigeria 🇳🇬
+          <motion.div className="space-y-2" variants={itemVariants}>
+            <p className="text-gray-500 text-xs">
+              Based in <span className="text-white font-semibold">Aba, Nigeria</span> 🇳🇬
+            </p>
+            <p className="text-gray-600 text-xs">
+              © {currentYear} Ikechukwu Victor. All rights reserved.
             </p>
           </motion.div>
 
           <motion.button
             variants={itemVariants}
-            whileHover={{ y: -3, scale: 1.05 }}
-            whileTap={{ y: -1, scale: 0.95 }}
+            whileHover={{ y: -2, scale: 1.02 }}
+            whileTap={{ y: 0, scale: 0.98 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="inline-flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 rounded-full text-white font-semibold transition-all shadow-lg hover:shadow-purple-500/50"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 rounded-lg text-white text-sm font-semibold transition-all shadow-lg hover:shadow-purple-500/50"
           >
-            <FaArrowUp size={16} /> Back to Top
+            <FaArrowUp size={14} /> Back to Top
           </motion.button>
         </motion.div>
       </div>
 
-      {/* Bottom Accent Line */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-50"></div>
+      {/* Top Accent */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
     </footer>
   );
 };
