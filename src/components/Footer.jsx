@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaArrowUp, FaEnvelope, FaMapMarkerAlt, FaReact, FaNode } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaArrowUp, FaEnvelope, FaMapMarkerAlt, FaReact, FaNode, FaWhatsapp } from "react-icons/fa";
 import { SiTailwindcss, SiVite, SiFramer } from "react-icons/si";
 
 const Footer = () => {
@@ -127,6 +127,16 @@ const Footer = () => {
                   className="w-9 h-9 bg-gradient-to-br from-rose-600/30 to-pink-600/30 hover:from-rose-600 hover:to-pink-600 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all border border-rose-500/20 hover:border-rose-500/50"
                 >
                   <FaEnvelope size={18} />
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                  href="https://wa.me/+2349045817261?text=Hi%20Victor%2C%20I%20would%20like%20to%20work%20with%20you"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 bg-gradient-to-br from-green-600/30 to-emerald-600/30 hover:from-green-600 hover:to-emerald-600 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all border border-green-500/20 hover:border-green-500/50"
+                >
+                  <FaWhatsapp size={18} />
                 </motion.a>
               </div>
             </div>
