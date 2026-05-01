@@ -24,220 +24,91 @@ import MagneticButton from "./MagneticButton";
 const projectsData = [
   {
     id: 1,
-    title: "Net-wallet",
-    tagline: "Your gateway to multi-chain crypto",
+    title: "Net Wallet",
+    tagline: "Crypto wallet for multiple blockchains",
     description:
-      "A wallet experience focused on speed, trust, and clarity. Users can buy, swap, and manage digital assets across multiple chains from one polished interface.",
-    tech: ["React", "Tailwind CSS", "Framer Motion", "Web3"],
+      "A crypto wallet I built that lets users manage their digital assets across different blockchain networks. Simple interface for buying, swapping, and tracking crypto.",
+    tech: ["React", "Tailwind CSS", "Web3"],
     image: netWalletPreview,
     demo: "https://net-wallet.vercel.app/",
     github: "https://github.com/ikechukwugolden",
     featured: true,
-    type: "Fintech",
-    year: "2026",
+    type: "Web App",
+    year: "2024",
     highlights: [
-      "Self-custody account model with private key ownership",
-      "Multi-chain compatibility for Ethereum, BNB Chain, and Polygon",
-      "Fast cross-chain swap flow optimized for fewer clicks",
-      "Security-first UX with encrypted wallet interactions",
-    ],
-    breakdown: {
-      challenge:
-        "Many wallet products feel complex for everyday users, especially when they need to move across chains quickly and safely.",
-      solution:
-        "Designed a guided wallet flow with clear actions for buy, swap, and manage so users can complete tasks with confidence.",
-      role:
-        "Led the frontend experience, interaction patterns, and component architecture for a smooth fintech-grade interface.",
-      outcome:
-        "Created a launch-ready wallet showcase that communicates trust, speed, and modern product quality for 2026 audiences.",
-    },
-    caseStudy: {
-      problem:
-        "In 2026, personal finances stay fragmented across bank apps, transfers, and cash records. Most users need one clear source of truth to track spending fast.",
-      role:
-        "Sole frontend developer and product designer for the MVP experience, from interaction design to implementation and deployment.",
-      stackChoice:
-        "React was chosen over template-driven alternatives because reusable components and Hook-based state made it easier to ship a real-time dashboard, filtering, and responsive interactions quickly without sacrificing maintainability.",
-      outcome:
-        "Shipped a production-ready MVP that cut manual bookkeeping effort by an estimated 60% and improved perceived speed through optimized rendering and focused UI states.",
-    },
-    featureCards: [
-      {
-        title: "Self-Custody Security",
-        detail: "Your keys, your crypto. Full control always.",
-        icon: FaLock,
-      },
-      {
-        title: "Multi-Chain Support",
-        detail: "Ethereum, BNB Chain, Polygon and more.",
-        icon: FaGlobe,
-      },
-      {
-        title: "Instant Cross-Chain Swaps",
-        detail: "Swap across supported chains in seconds.",
-        icon: FaExchangeAlt,
-      },
-      {
-        title: "Fast and Secure",
-        detail: "Enterprise-grade encryption throughout.",
-        icon: FaBolt,
-      },
+      "Works with Ethereum, BNB Chain, and Polygon",
+      "Easy buy and swap features",
+      "Secure wallet management",
+      "Clean, simple design",
     ],
   },
   {
     id: 2,
-    title: "Attendance Management",
-    tagline: "Real-time academic operations",
-    description: "Full-stack attendance platform with live tracking and actionable dashboards.",
+    title: "Attendance Tracker",
+    tagline: "School attendance management",
+    description: "A web app I built for schools to track student attendance. Teachers can mark attendance digitally and admins can see reports.",
     tech: ["React", "Firebase", "Tailwind"],
     image: image3,
     demo: "https://attendance-website-eight.vercel.app/",
     github: "https://github.com/ikechukwugolden",
-    type: "Full Stack",
-    year: "2025",
+    type: "Web App",
+    year: "2024",
     highlights: [
-      "Live student attendance sync",
-      "Admin-friendly analytics view",
-      "Reliable Firebase cloud storage",
+      "Real-time attendance tracking",
+      "Admin dashboard with reports",
+      "Works on mobile and desktop",
     ],
-    breakdown: {
-      challenge:
-        "Manual attendance tracking leads to errors, delays, and limited visibility for teachers and administrators.",
-      solution:
-        "Built a real-time digital attendance workflow with role-based access and dashboard reporting for faster decisions.",
-      role:
-        "Handled frontend architecture, Firebase integration, and UX for data capture, filtering, and reporting views.",
-      outcome:
-        "Delivered a reliable academic operations tool that reduces admin overhead and improves attendance visibility.",
-    },
-    caseStudy: {
-      problem:
-        "Schools needed to replace error-prone paper attendance workflows with a real-time digital process teachers could trust daily.",
-      role:
-        "Primary full-stack contributor in a small project setup, owning React UI architecture, Firebase integration, and reporting dashboards.",
-      stackChoice:
-        "React was selected for predictable component composition and rapid iteration of role-based interfaces, while Firebase accelerated secure realtime sync and data persistence.",
-      outcome:
-        "Reduced attendance logging friction for staff and enabled instant visibility into attendance trends, removing manual report collation delays.",
-    },
   },
   {
     id: 3,
-    title: "Service-Linkr",
-    tagline: "Local service discovery made simple",
-    description: "Connects trusted local service providers with clients through a smooth booking flow.",
+    title: "Service Linkr",
+    tagline: "Find local services",
+    description: "A platform to help people find and book local service providers like plumbers, electricians, and other professionals.",
     tech: ["React", "Firebase", "Tailwind"],
     image: image2,
     demo: "https://service-linkr-t938.vercel.app/",
     github: "https://github.com/ikechukwugolden",
-    type: "Full Stack",
-    year: "2025",
+    type: "Web App",
+    year: "2024",
     highlights: [
-      "Provider discovery and listing",
-      "Client-first matching UX",
-      "Responsive mobile experience",
+      "Search for local services",
+      "Provider profiles and reviews",
+      "Easy booking system",
     ],
-    breakdown: {
-      challenge:
-        "Users struggle to find trusted local professionals quickly, while providers need better online visibility.",
-      solution:
-        "Designed a searchable marketplace flow that connects service providers with clients through a clear booking path.",
-      role:
-        "Implemented UI system, listing flow, and Firebase-backed service data management for quick content updates.",
-      outcome:
-        "Produced a scalable service platform concept that makes local hiring more efficient on web and mobile.",
-    },
-    caseStudy: {
-      problem:
-        "Clients struggled to quickly find trusted local providers while providers lacked a structured way to present services online.",
-      role:
-        "Lead frontend engineer working with product requirements to deliver listing discovery, service detail flows, and mobile-first booking UX.",
-      stackChoice:
-        "React enabled modular search and listing interfaces with consistent state handling, making it easier to refine conversion paths during user-flow testing.",
-      outcome:
-        "Delivered a responsive marketplace MVP that improved service discovery speed and gave providers a more credible digital storefront.",
-    },
   },
   {
     id: 4,
     title: "Monie Point",
-    tagline: "Digital transaction simulation",
-    description: "Fintech simulation project focused on payment flow clarity and onboarding UX.",
-    tech: ["Tailwind CSS", "JavaScript"],
+    tagline: "Banking dashboard",
+    description: "A simple banking interface showing account balances and transaction history. Built as a UI demonstration.",
+    tech: ["HTML", "Tailwind CSS", "JavaScript"],
     image: two,
     demo: "https://ikechukwuv074.github.io/moniepoint/",
     github: "https://github.com/ikechukwugolden",
-    type: "Fintech",
+    type: "Web App",
     year: "2024",
     highlights: [
-      "Clean financial dashboard",
-      "Clear payment interaction flow",
-      "Readable visual hierarchy",
+      "Clean account overview",
+      "Transaction history",
+      "Simple navigation",
     ],
-    breakdown: {
-      challenge:
-        "Fintech dashboards often overload users and make payment actions feel risky or unclear.",
-      solution:
-        "Created a focused transaction simulation with simplified dashboard blocks and direct call-to-action patterns.",
-      role:
-        "Designed and developed the frontend flow with emphasis on clarity, trust signals, and interaction rhythm.",
-      outcome:
-        "Showcased a polished fintech UI concept that demonstrates strong product thinking and conversion-friendly UX.",
-    },
   },
   {
     id: 5,
     title: "MedConnect Hospital",
-    tagline: "Care coordination platform",
-    description: "Healthcare interface concept for doctor-patient coordination and appointment flow.",
-    tech: ["HTML", "Tailwind", "JavaScript"],
+    tagline: "Hospital website",
+    description: "A website for a hospital with information about services, doctors, and appointment booking.",
+    tech: ["HTML", "Tailwind CSS", "JavaScript"],
     image: one,
     demo: "https://ikechukwuv074.github.io/MedConnect-Website/",
     github: "https://github.com/ikechukwugolden",
-    type: "Healthcare",
+    type: "Website",
     year: "2024",
     highlights: [
-      "Doctor-patient scheduling flow",
-      "Human-friendly healthcare UI",
-      "Device-responsive layout",
+      "Service information",
+      "Doctor profiles",
+      "Appointment booking",
     ],
-    breakdown: {
-      challenge:
-        "Healthcare users need low-friction appointment flow and clear communication without technical confusion.",
-      solution:
-        "Built a patient-friendly interface for doctor discovery, scheduling, and basic communication touchpoints.",
-      role:
-        "Owned the frontend UX and component layout with attention to trust, readability, and accessibility principles.",
-      outcome:
-        "Delivered a healthcare concept site that communicates care quality while keeping navigation straightforward.",
-    },
-  },
-  {
-    id: 6,
-    title: "Tailor Website",
-    tagline: "Fashion showcase portfolio",
-    description: "Modern brand website for fashion design showcases and customer lead capture.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    image: image1,
-    demo: "https://ikechukwuv074.github.io/practical/",
-    github: "https://github.com/ikechukwugolden",
-    type: "Frontend",
-    year: "2024",
-    highlights: [
-      "Visual storytelling layout",
-      "Strong brand presentation",
-      "Simple conversion-focused navigation",
-    ],
-    breakdown: {
-      challenge:
-        "Fashion brands need visual storytelling and clean structure to convert visitors into serious customers.",
-      solution:
-        "Developed an editorial-style portfolio website with bold sections, showcase galleries, and clear contact prompts.",
-      role:
-        "Handled complete frontend execution from layout direction to responsive behavior and visual refinements.",
-      outcome:
-        "Created a professional brand presence that helps a tailor present work credibly and attract new clients.",
-    },
   },
 ];
 
@@ -249,7 +120,7 @@ const ProjectCard = ({ project, index, onPreview, liked, onToggleLike }) => (
     exit={{ opacity: 0, scale: 0.96 }}
     viewport={{ once: true, amount: 0.2 }}
     transition={{ duration: 0.45, delay: index * 0.05 }}
-    className="group overflow-hidden rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/70 backdrop-blur-md shadow-xl shadow-slate-200/50 dark:shadow-black/30"
+    className="group overflow-hidden rounded-4xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/70 backdrop-blur-md shadow-xl shadow-slate-200/50 dark:shadow-black/30"
   >
     <button
       type="button"
@@ -408,10 +279,8 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative w-full min-h-screen py-16 md:py-28 px-4 md:px-5 text-slate-900 dark:text-white bg-slate-50 dark:bg-[#020613] overflow-hidden"
+      className="relative w-full min-h-screen py-16 md:py-28 px-4 md:px-5 text-slate-900 dark:text-white bg-slate-50 dark:bg-gray-900"
     >
-      <div className="absolute -top-24 -left-16 w-[420px] h-[420px] rounded-full bg-blue-500/18 dark:bg-blue-500/12 blur-[130px] -z-10" />
-      <div className="absolute bottom-0 right-0 w-[420px] h-[420px] rounded-full bg-cyan-500/12 dark:bg-cyan-500/8 blur-[130px] -z-10" />
 
       <div className="max-w-7xl mx-auto space-y-12 md:space-y-16">
         <div className="text-center flex flex-col items-center">
@@ -419,13 +288,13 @@ const Projects = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-[10px] font-black uppercase tracking-[0.35em] text-blue-600 dark:text-cyan-300"
+            className="text-sm font-medium text-blue-600 dark:text-cyan-300"
           >
-            2026 Portfolio Format
+            My Work
           </motion.span>
-          <h2 className="mt-4 text-3xl sm:text-4xl md:text-7xl font-black tracking-tight uppercase">Project Case Studies</h2>
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight">Projects</h2>
           <p className="mt-5 max-w-3xl text-slate-600 dark:text-slate-300 leading-relaxed">
-            Each project below is presented like a product launch: clear value proposition, key features, stack, and direct access to the live experience.
+            Here are some websites and apps I've built. Click on any project to see more details and visit the live site.
           </p>
         </div>
 
@@ -474,19 +343,14 @@ const Projects = () => {
                 <p className="text-slate-200 leading-relaxed">{featuredProject.description}</p>
 
                 <div className="grid sm:grid-cols-2 gap-3">
-                  {featuredProject.featureCards.map((feature) => {
-                    const Icon = feature.icon;
-
-                    return (
-                      <div key={feature.title} className="rounded-2xl border border-white/10 bg-white/10 backdrop-blur-sm p-4">
-                        <div className="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center mb-3">
-                          <Icon />
-                        </div>
-                        <h4 className="text-sm font-bold mb-1">{feature.title}</h4>
-                        <p className="text-xs text-slate-300 leading-relaxed">{feature.detail}</p>
+                  {featuredProject.highlights.map((highlight, index) => (
+                    <div key={index} className="rounded-2xl border border-white/10 bg-white/10 backdrop-blur-sm p-4">
+                      <div className="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center mb-3">
+                        <FaBolt className="text-sm" />
                       </div>
-                    );
-                  })}
+                      <p className="text-sm text-slate-200 leading-relaxed">{highlight}</p>
+                    </div>
+                  ))}
                 </div>
 
                 <div className="flex flex-wrap gap-3 pt-1">
@@ -604,7 +468,7 @@ const Projects = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setActiveProject(null)}
-            className="fixed inset-0 z-[140] bg-black/70 backdrop-blur-sm p-4 md:p-8 flex items-center justify-center"
+            className="fixed inset-0 z-140 bg-black/70 backdrop-blur-sm p-4 md:p-8 flex items-center justify-center"
           >
             <motion.div
               initial={{ opacity: 0, y: 24, scale: 0.95 }}
@@ -612,7 +476,7 @@ const Projects = () => {
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
               transition={{ duration: 0.25 }}
               onClick={(event) => event.stopPropagation()}
-            className="w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-[2rem] bg-white dark:bg-[#081023] border border-slate-300 dark:border-slate-700 shadow-2xl"
+            className="w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-4xl bg-white dark:bg-[#081023] border border-slate-300 dark:border-slate-700 shadow-2xl"
             >
               <div className="relative p-4 md:p-5 bg-slate-900/90">
                 <div className="rounded-2xl overflow-hidden border border-white/10 bg-slate-950">
@@ -622,7 +486,7 @@ const Projects = () => {
                     <span className="w-2 h-2 rounded-full bg-emerald-400" />
                     <span className="ml-2 text-[8px] uppercase tracking-[0.2em] text-slate-300">Case Study Mockup</span>
                   </div>
-                  <img src={activeProject.image} alt={activeProject.title} className="w-full h-[240px] md:h-[420px] object-cover" />
+                  <img src={activeProject.image} alt={activeProject.title} className="w-full h-60 md:h-[420px] object-cover" />
                 </div>
                 <button
                   type="button"

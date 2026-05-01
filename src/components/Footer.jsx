@@ -1,157 +1,183 @@
 ﻿import React from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaArrowUp, FaEnvelope, FaMapMarkerAlt, FaCircle, FaDownload } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaArrowUp, FaEnvelope, FaMapMarkerAlt, FaReact, FaNode } from "react-icons/fa";
+import { SiTailwindcss, SiVite, SiFramer } from "react-icons/si";
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   const currentYear = new Date().getFullYear();
-  const stack = ["React", "Next.js", "Firebase", "Tailwind", "Framer Motion", "Node.js", "MongoDB"];
-  const socialLinks = {
-    github: "https://github.com/ikechukwugolden",
-    linkedin: "https://www.linkedin.com/in/ikechukwu-victor/",
-    twitter: "https://x.com/ikechukwugolden",
+
+  const quickLinks = [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Projects", href: "/projects" },
+    { label: "Contact", href: "/#contact" },
+  ];
+
+  const techStack = [
+    { icon: FaReact, label: "React", color: "text-blue-400" },
+    { icon: SiTailwindcss, label: "Tailwind", color: "text-cyan-400" },
+    { icon: SiFramer, label: "Framer", color: "text-purple-400" },
+    { icon: SiVite, label: "Vite", color: "text-yellow-400" },
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
   };
 
-  const handleResumeClick = async (event) => {
-    event.preventDefault();
-
-    try {
-      const resumeResponse = await fetch("/resume.pdf", { method: "HEAD" });
-      if (resumeResponse.ok) {
-        window.location.href = "/resume.pdf";
-        return;
-      }
-    } catch {
-      // Fall back to email request if the PDF is unavailable.
-    }
-
-    window.location.href =
-      "mailto:ikechukwuv074@gmail.com?subject=Resume%20Request&body=Hello%20Victor%2C%20please%20share%20your%20latest%20resume.";
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
-    <footer className="w-full bg-white dark:bg-[#030712] text-slate-900 dark:text-white pt-16 md:pt-24 pb-10 md:pb-12 px-4 md:px-6 relative overflow-hidden border-t border-gray-200 dark:border-white/5 transition-colors duration-500">
-      <div className="max-w-7xl mx-auto mb-10 md:mb-16">
-        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-green-500/5 border border-green-500/20">
-          <motion.div animate={{ opacity: [1, 0.4, 1] }} transition={{ duration: 2, repeat: Infinity }}>
-            <FaCircle className="text-green-500 text-[8px]" />
-          </motion.div>
-          <span className="text-[10px] font-black uppercase tracking-[0.12em] sm:tracking-[0.2em] text-green-600 dark:text-green-500">
-            Available for new projects - {new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric" }).format(new Date())}
-          </span>
-        </div>
+    <footer className="relative bg-gradient-to-b from-gray-900 via-gray-900 to-black text-white py-16 overflow-hidden">
+      {/* Gradient Background Effects */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-16 mb-14 md:mb-20">
-          <div className="lg:col-span-1">
-            <h2 className="text-2xl sm:text-3xl font-black tracking-tighter italic mb-6 uppercase">
-              Ikechukwu victor<span className="text-purple-600 dark:text-purple-500">.</span>
+      <div className="relative z-10 container mx-auto px-4">
+        {/* Top Section - Branding & Social */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 pb-8 border-b border-gray-700"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {/* Brand */}
+          <motion.div className="text-center md:text-left" variants={itemVariants}>
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent mb-2">
+              Ikechukwu Victor
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-8 font-medium">
-              Crafting high-performance digital experiences with a focus on clean code and intuitive design.
-            </p>
-            <div className="flex gap-4">
-              <a
-                href={socialLinks.github}
-                target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-purple-600 hover:text-white hover:border-purple-500 transition-all duration-300"
-                aria-label="GitHub profile"
-              >
-                <FaGithub />
-              </a>
-              <a
-                href={socialLinks.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-purple-600 hover:text-white hover:border-purple-500 transition-all duration-300"
-                aria-label="LinkedIn profile"
-              >
-                <FaLinkedin />
-              </a>
-              <a
-                href={socialLinks.twitter}
-                target="_blank"
-                rel="noreferrer"
-                className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:bg-purple-600 hover:text-white hover:border-purple-500 transition-all duration-300"
-                aria-label="X profile"
-              >
-                <FaXTwitter />
-              </a>
-            </div>
-          </div>
+            <p className="text-gray-400 text-sm">Crafting high-performance digital experiences.</p>
+            
+            {/* Availability Badge */}
+            <motion.div
+              className="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/50 px-4 py-2 rounded-full backdrop-blur"
+              whileHover={{ scale: 1.05 }}
+            >
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+              <span className="text-xs font-semibold text-green-300">Available for Work</span>
+            </motion.div>
+          </motion.div>
 
-          <div>
-            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-600 dark:text-purple-400 mb-8">Navigation</h4>
-            <ul className="space-y-4">
-              {["Home", "Services", "Projects", "Contact"].map((item) => (
-                <li key={item}>
-                  <a href={`#${item.toLowerCase()}`} className="text-gray-500 hover:text-purple-600 dark:hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-600 dark:text-purple-400 mb-8">Main Stack</h4>
-            <div className="flex flex-wrap gap-2">
-              {stack.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-3 py-1 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg text-[9px] font-black uppercase tracking-tighter text-gray-600 dark:text-gray-400"
+          {/* Quick Links */}
+          <motion.div className="text-center" variants={itemVariants}>
+            <h3 className="text-lg font-semibold mb-4 text-gray-200">Quick Links</h3>
+            <div className="flex flex-col space-y-2">
+              {quickLinks.map((link) => (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  className="text-gray-400 hover:text-purple-400 transition-colors text-sm"
+                  whileHover={{ x: 5 }}
                 >
-                  {tech}
-                </span>
+                  → {link.label}
+                </motion.a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div>
-            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-600 dark:text-purple-400 mb-8">Contact</h4>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <FaEnvelope className="text-purple-600 dark:text-purple-500" />
-                <span className="text-sm font-bold text-gray-700 dark:text-gray-300 break-all">ikechukwuv074@gmail.com</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <FaMapMarkerAlt className="text-purple-600 dark:text-purple-500" />
-                <span className="text-sm font-bold text-gray-700 dark:text-gray-300">Aba, Nigeria</span>
-              </div>
-              <a
-                href="/resume.pdf"
-                onClick={handleResumeClick}
-                className="inline-flex items-center gap-2 mt-2 px-4 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-black text-[10px] font-black uppercase tracking-[0.16em] hover:bg-purple-600 dark:hover:bg-purple-500 dark:hover:text-white transition-colors"
+          {/* Social Links */}
+          <motion.div className="text-center md:text-right" variants={itemVariants}>
+            <h3 className="text-lg font-semibold mb-4 text-gray-200">Connect</h3>
+            <div className="flex justify-center md:justify-end space-x-4">
+              <motion.a
+                whileHover={{ scale: 1.2, rotate: 10 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://github.com/ikechukwugolden"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gradient-to-br from-gray-700 to-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:from-purple-600 hover:to-purple-700 hover:text-white transition-all"
               >
-                <FaDownload /> Download PDF Resume
-              </a>
+                <FaGithub size={20} />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.2, rotate: 10 }}
+                whileTap={{ scale: 0.95 }}
+                href="https://www.linkedin.com/in/ikechukwu-victor/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gradient-to-br from-gray-700 to-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:from-blue-600 hover:to-blue-700 hover:text-white transition-all"
+              >
+                <FaLinkedin size={20} />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.2, rotate: 10 }}
+                whileTap={{ scale: 0.95 }}
+                href="mailto:ikechukwuv074@gmail.com"
+                className="w-10 h-10 bg-gradient-to-br from-gray-700 to-gray-800 rounded-full flex items-center justify-center text-gray-300 hover:from-red-600 hover:to-red-700 hover:text-white transition-all"
+              >
+                <FaEnvelope size={20} />
+              </motion.a>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="pt-10 md:pt-12 border-t border-gray-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-[10px] font-black text-gray-400 dark:text-gray-600 uppercase tracking-[0.12em] sm:tracking-[0.2em] text-center md:text-left">
-            © {currentYear} GOLDEN DESIGNS. ALL RIGHTS RESERVED.
-          </p>
+        {/* Tech Stack Section */}
+        <motion.div
+          className="mb-12 pb-8 border-b border-gray-700"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <h3 className="text-center text-lg font-semibold mb-6 text-gray-200">Built With Modern Tech</h3>
+          <div className="flex flex-wrap justify-center gap-6">
+            {techStack.map((tech) => {
+              const Icon = tech.icon;
+              return (
+                <motion.div
+                  key={tech.label}
+                  className="flex flex-col items-center"
+                  variants={itemVariants}
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="p-3 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors mb-2">
+                    <Icon size={28} className={tech.color} />
+                  </div>
+                  <span className="text-xs text-gray-400">{tech.label}</span>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        {/* Bottom Section */}
+        <motion.div
+          className="text-center space-y-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.div variants={itemVariants}>
+            <p className="text-gray-500 text-sm">
+              © {currentYear} Ikechukwu Victor. All rights reserved. | Based in Aba, Nigeria 🇳🇬
+            </p>
+          </motion.div>
 
           <motion.button
-            whileHover={{ y: -5 }}
-            onClick={scrollToTop}
-            className="group flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-purple-600 transition-colors"
+            variants={itemVariants}
+            whileHover={{ y: -3, scale: 1.05 }}
+            whileTap={{ y: -1, scale: 0.95 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="inline-flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 rounded-full text-white font-semibold transition-all shadow-lg hover:shadow-purple-500/50"
           >
-            Back to Top
-            <div className="w-8 h-8 rounded-full border border-gray-200 dark:border-white/10 flex items-center justify-center group-hover:border-purple-600 dark:group-hover:border-purple-500/50">
-              <FaArrowUp size={12} />
-            </div>
+            <FaArrowUp size={16} /> Back to Top
           </motion.button>
-        </div>
+        </motion.div>
       </div>
+
+      {/* Bottom Accent Line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-50"></div>
     </footer>
   );
 };

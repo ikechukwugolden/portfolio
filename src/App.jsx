@@ -61,7 +61,7 @@ const ScrollProgress = () => {
   return (
     <motion.div
       style={{ scaleX, transformOrigin: "0% 50%" }}
-      className="fixed top-0 left-0 right-0 h-1 bg-linear-to-r from-purple-500 via-pink-500 to-blue-500 z-[120]"
+      className="fixed top-0 left-0 right-0 h-1 bg-linear-to-r from-purple-500 via-pink-500 to-blue-500 z-120"
       aria-hidden="true"
     />
   );
@@ -74,7 +74,7 @@ const BootLoader = ({ isVisible }) => (
         initial={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.45 }}
-        className="fixed inset-0 z-[200] flex items-center justify-center bg-white dark:bg-[#030712]"
+        className="fixed inset-0 z-200 flex items-center justify-center bg-white dark:bg-[#030712]"
       >
         <motion.div
           animate={{
@@ -127,7 +127,7 @@ const App = () => {
         <Header />
 
         {/* Main Content Area */}
-        <main className="pt-20 flex-grow flex flex-col">
+        <main className="pt-20 grow flex flex-col">
           <AnimatePresence mode="wait">
             <Routes>
               {/* Main Landing Page Stack */}
@@ -192,7 +192,7 @@ const App = () => {
           href="https://web.whatsapp.com/send?phone=2349045817261&text=Hello%20Victor%2C%20I%20want%20to%20chat%20about%20a%20project."
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed bottom-8 right-8 z-[99] bg-green-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all md:hidden"
+          className="fixed bottom-8 right-8 z-99 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all md:hidden"
           aria-label="Chat on WhatsApp"
         >
           <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">

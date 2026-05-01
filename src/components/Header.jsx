@@ -98,8 +98,8 @@ const Header = () => {
   }, [menuOpen]);
 
   return (
-    <header className="fixed top-0 sm:top-4 left-1/2 -translate-x-1/2 w-[calc(100%-1rem)] sm:w-full max-w-7xl z-[100]">
-      <div className="bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-2xl sm:rounded-[2rem] px-3 sm:px-6 h-16 sm:h-20 flex items-center justify-between shadow-2xl transition-all duration-500">
+    <header className="fixed top-0 sm:top-4 left-1/2 -translate-x-1/2 w-[calc(100%-1rem)] sm:w-full max-w-7xl z-100">
+      <div className="bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-2xl sm:rounded-4xl px-3 sm:px-6 h-16 sm:h-20 flex items-center justify-between shadow-2xl transition-all duration-500">
         
         {/* LOGO */}
         <Link to="/" className="group flex items-center gap-2 min-w-0">
@@ -192,7 +192,7 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-slate-950/35 backdrop-blur-[2px] md:hidden z-[108]"
+              className="fixed inset-0 bg-slate-950/35 backdrop-blur-[2px] md:hidden z-108"
             />
 
             <motion.div
@@ -200,7 +200,7 @@ const Header = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -18, scale: 0.97 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="fixed top-20 sm:top-24 left-2 right-2 sm:left-4 sm:right-4 bg-white/92 dark:bg-[#0d0f17]/95 backdrop-blur-2xl border border-black/5 dark:border-white/10 rounded-[1.8rem] sm:rounded-[2.2rem] p-4 sm:p-5 shadow-2xl md:hidden z-[110]"
+              className="fixed top-20 sm:top-24 left-2 right-2 sm:left-4 sm:right-4 bg-white/92 dark:bg-[#0d0f17]/95 backdrop-blur-2xl border border-black/5 dark:border-white/10 rounded-[1.8rem] z-110 sm:rounded-[2.2rem] p-4 sm:p-5 shadow-2xl md:hidden z-[110]"
             >
               <div className="flex items-center justify-between mb-3 sm:mb-4 px-1">
                 <p className="text-[10px] font-black uppercase tracking-[0.25em] text-purple-600 dark:text-purple-400">Navigation</p>

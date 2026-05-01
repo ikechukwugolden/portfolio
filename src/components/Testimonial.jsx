@@ -51,8 +51,8 @@ const Testimonial = () => {
       id="social-proof"
       className="w-full bg-white dark:bg-[#030712] text-slate-900 dark:text-white py-20 md:py-28 px-4 md:px-5 relative overflow-hidden transition-colors duration-500"
     >
-      <div className="absolute top-16 -left-20 w-80 h-80 bg-blue-600/8 dark:bg-blue-600/12 rounded-full blur-[120px] -z-0" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600/7 dark:bg-purple-600/10 rounded-full blur-[120px] -z-0" />
+      <div className="absolute top-16 -left-20 w-80 h-80 bg-blue-600/8 dark:bg-blue-600/12 rounded-full blur-[120px] z-0" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600/7 dark:bg-purple-600/10 rounded-full blur-[120px] z-0" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -75,16 +75,34 @@ const Testimonial = () => {
             {testimonials.map((item, index) => (
               <motion.article
                 key={item.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
-                transition={{ delay: index * 0.06 }}
-                className="rounded-[1.8rem] border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-5 sm:p-6"
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ x: 8, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
+                className="group rounded-2xl border border-gray-200 dark:border-white/10 bg-linear-to-br from-gray-50 to-gray-100 dark:from-white/5 dark:to-white/10 p-6 sm:p-8 hover:border-purple-400/50 dark:hover:border-purple-500/50 transition-all duration-300 backdrop-blur-sm"
               >
-                <FaQuoteLeft className="text-purple-500 mb-3" />
-                <p className="text-slate-700 dark:text-slate-200 leading-relaxed text-sm sm:text-base">{item.quote}</p>
-                <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-slate-900 dark:text-white">{item.name}</p>
-                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">{item.role}</p>
+                <div className="flex items-start justify-between mb-4">
+                  <motion.div 
+                    whileHover={{ scale: 1.2, rotate: 10 }}
+                    className="text-3xl text-purple-500/40 group-hover:text-purple-500 transition-colors"
+                  >
+                    <FaQuoteLeft />
+                  </motion.div>
+                  <div className="flex gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <motion.span key={i} whileHover={{ scale: 1.2 }} className="text-lg text-yellow-400">★</motion.span>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-slate-700 dark:text-slate-100 leading-relaxed text-base sm:text-lg font-medium mb-6">{item.quote}</p>
+                <motion.div 
+                  whileHover={{ x: 4 }}
+                  className="border-t border-gray-200 dark:border-white/10 pt-4"
+                >
+                  <p className="text-sm font-black uppercase tracking-widest text-slate-900 dark:text-white mb-1">{item.name}</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">{item.role}</p>
+                </motion.div>
               </motion.article>
             ))}
           </div>
@@ -94,30 +112,38 @@ const Testimonial = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="rounded-[1.8rem] border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-5 sm:p-6"
+              className="rounded-2xl border border-gray-200 dark:border-white/10 bg-linear-to-br from-gray-50 to-gray-100 dark:from-white/5 dark:to-white/10 p-6 sm:p-8 backdrop-blur-sm"
             >
-              <div className="flex items-center gap-2 mb-4">
-                <FaCertificate className="text-purple-600 dark:text-purple-400" />
-                <h3 className="text-sm font-black uppercase tracking-[0.16em]">Certifications</h3>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 rounded-lg bg-purple-600/10 border border-purple-400/20">
+                  <FaCertificate className="text-2xl text-purple-600 dark:text-purple-400" />
+                </div>
+                <h3 className="text-sm font-black uppercase tracking-[0.2em] text-slate-900 dark:text-white">Certifications</h3>
               </div>
-              <div className="space-y-2">
-                {certifications.map((cert) => (
-                  <a
+              <div className="space-y-3">
+                {certifications.map((cert, idx) => (
+                  <motion.a
                     key={cert.title}
                     href={cert.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center justify-between gap-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-900/70 px-3 py-3 hover:border-purple-400/40 transition-colors"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    whileHover={{ scale: 1.02, x: 4 }}
+                    className="flex items-center justify-between gap-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-900/50 px-4 py-3.5 hover:border-purple-400/50 dark:hover:border-purple-500/50 transition-all group"
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <span className="text-lg text-purple-600 dark:text-purple-400">{cert.icon}</span>
+                      <span className="text-2xl text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform">{cert.icon}</span>
                       <div className="min-w-0">
-                        <p className="text-xs font-black uppercase tracking-[0.1em] truncate">{cert.title}</p>
-                        <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400 truncate">{cert.provider}</p>
+                        <p className="text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-white truncate">{cert.title}</p>
+                        <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 truncate">{cert.provider}</p>
                       </div>
                     </div>
-                    <FaExternalLinkAlt className="text-xs text-slate-500" />
-                  </a>
+                    <span className="text-sm text-purple-600 dark:text-purple-400 shrink-0">
+                      <FaExternalLinkAlt />
+                    </span>
+                  </motion.a>
                 ))}
               </div>
             </motion.div>
@@ -126,28 +152,41 @@ const Testimonial = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
               href="https://github.com/ikechukwugolden"
               target="_blank"
               rel="noreferrer"
-              className="block rounded-[1.8rem] border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-5 sm:p-6"
+              whileHover={{ y: -5 }}
+              className="block rounded-2xl border border-gray-200 dark:border-white/10 bg-linear-to-br from-gray-50 to-gray-100 dark:from-white/5 dark:to-white/10 p-6 sm:p-8 hover:border-purple-400/50 dark:hover:border-purple-500/50 transition-all group backdrop-blur-sm"
             >
-              <div className="flex items-center justify-between gap-3 mb-4">
-                <div className="flex items-center gap-2">
-                  <FaGithub className="text-purple-600 dark:text-purple-400" />
-                  <h3 className="text-sm font-black uppercase tracking-[0.16em]">GitHub Activity</h3>
+              <div className="flex items-center justify-between gap-3 mb-5">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 rounded-lg bg-slate-900 dark:bg-white">
+                    <FaGithub className="text-white dark:text-slate-900 text-lg" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-black uppercase tracking-[0.2em] text-slate-900 dark:text-white">GitHub</h3>
+                    <p className="text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Activity</p>
+                  </div>
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-[0.16em] text-slate-500 dark:text-slate-400">Live</span>
+                <motion.span 
+                  animate={{ scale: [1, 1.1, 1] }} 
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="text-xs font-bold text-green-500 bg-green-500/10 px-3 py-1 rounded-full uppercase tracking-wider"
+                >
+                  Live
+                </motion.span>
               </div>
-              <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-900/60">
+              <div className="rounded-xl overflow-hidden border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-900/80">
                 <img
                   src="https://ghchart.rshah.org/6b21a8/ikechukwugolden"
                   alt="GitHub contribution graph for ikechukwugolden"
                   loading="lazy"
-                  className="w-full h-auto"
+                  className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500 dark:text-slate-400">
-                Click to open full GitHub profile
+              <p className="mt-4 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                → Open full GitHub profile
               </p>
             </motion.a>
           </div>

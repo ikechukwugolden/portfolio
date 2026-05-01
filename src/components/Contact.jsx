@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, } from "framer-motion";
+import {motion} from "framer-motion";
 import {
   FaEnvelope,
   FaPhone,
@@ -50,7 +51,8 @@ const Contact = () => {
 
   useEffect(() => {
     return () => {
-      timeoutRefs.current.forEach((timeoutId) => clearTimeout(timeoutId));
+      const timeoutIds = timeoutRefs.current;
+      timeoutIds.forEach((timeoutId) => clearTimeout(timeoutId));
     };
   }, []);
 
@@ -65,7 +67,7 @@ const Contact = () => {
     }
   };
 
-  const targetInbox = "ikechukwuv074@gmail.com";
+  // const targetInbox = "ikechukwuv074@gmail.com";
 
   const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 
@@ -98,29 +100,50 @@ const Contact = () => {
 
     setEmailError("");
     setStatus("sending");
-    const emailSubject = formData.subject.trim() || "New Project Inquiry";
-    const emailBody = [
-      `Name: ${formData.name.trim()}`,
-      `Email: ${formData.email.trim()}`,
-      "",
-      "Project Brief:",
-      formData.message.trim(),
-      "",
-      `Sent from portfolio form (${new Date().toLocaleString("en-GB", { timeZone: "Africa/Lagos" })})`,
-    ].join("\n");
 
-    const mailtoLink = `mailto:${targetInbox}?subject=${encodeURIComponent(`[Portfolio] ${emailSubject}`)}&body=${encodeURIComponent(emailBody)}`;
+    try {
+      // Send email using Formspree API
+      const response = await fetch(`https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_ID}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || "New Project Inquiry",
+          message: formData.message,
+          timestamp: new Date().toLocaleString("en-GB", { timeZone: "Africa/Lagos" }),
+        }),
+      });
 
-    await new Promise((resolve) => setTimeout(resolve, 350));
-    window.location.href = mailtoLink;
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
-    setStatus("success");
-    setShowConfetti(true);
-    triggerHaptic([20, 40, 20]);
-    setFormData({ name: "", email: "", subject: "", message: "" });
+      setStatus("success");
+      setShowConfetti(true);
+      triggerHaptic([20, 40, 20]);
+      setFormData({ name: "", email: "", subject: "", message: "" });
 
-    queueTimeout(() => setShowConfetti(false), 900);
-    queueTimeout(() => setStatus("idle"), 2600);
+      queueTimeout(() => setShowConfetti(false), 900);
+      queueTimeout(() => setStatus("idle"), 2600);
+    } catch (error) {
+      console.error("Email send failed:", error);
+      setStatus("idle");
+      setEmailError("Connection issue. Trying alternate method...");
+      
+      // Fallback to mailto
+      setTimeout(() => {
+        const mailtoLink = `mailto:ikechukwuv074@gmail.com?subject=${encodeURIComponent(
+          `[Portfolio] ${formData.subject || "New Project Inquiry"}`
+        )}&body=${encodeURIComponent(
+          `From: ${formData.name} (${formData.email})\n\nMessage:\n${formData.message}`
+        )}`;
+        window.location.href = mailtoLink;
+      }, 500);
+      triggerHaptic(12);
+    }
   };
 
   const contactDetails = [
@@ -163,10 +186,10 @@ const Contact = () => {
           className="text-center mb-14 md:mb-20"
         >
           <div className="inline-block px-4 py-1.5 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 mb-6">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-600 dark:text-purple-400">Secure Line</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-purple-600 dark:text-purple-400">Direct Connection</span>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter italic mb-4">
-            LET'S <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-600 to-blue-500 dark:from-purple-400 dark:to-blue-400">SYNC</span> UP
+            LET'S <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-600 to-blue-500 dark:from-purple-400 dark:to-blue-400">CONNECT</span>
           </h2>
           <p className="text-gray-500 dark:text-gray-400 font-medium uppercase tracking-[0.16em] sm:tracking-[0.4em] text-[10px]">Worldwide Collaboration Available</p>
           <a
@@ -192,7 +215,7 @@ const Contact = () => {
                 rel={item.title === "Location" ? "noreferrer" : undefined}
                 whileHover={{ x: 10 }}
                 transition={{ delay: index * 0.05 }}
-                className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-[1.6rem] sm:rounded-[2rem] transition-all group"
+                className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/5 rounded-[1.6rem] sm:rounded-4xl transition-all group"
               >
                 <div className={`text-2xl ${item.color} group-hover:scale-110 transition-transform`}>{item.icon}</div>
                 <div>
@@ -202,7 +225,7 @@ const Contact = () => {
               </motion.a>
             ))}
 
-            <div className="p-6 sm:p-8 bg-linear-to-br from-purple-600/10 to-blue-600/10 border border-purple-500/20 dark:border-white/10 rounded-[2rem] sm:rounded-[2.5rem] relative overflow-hidden group">
+            <div className="p-6 sm:p-8 bg-linear-to-br from-purple-600/10 to-blue-600/10 border border-purple-500/20 dark:border-white/10 rounded-4xl sm:rounded-[2.5rem] relative overflow-hidden group">
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-4">
                   <FaClock className="text-purple-600 dark:text-purple-400" />
@@ -218,7 +241,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-8 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-[2rem] sm:rounded-[3rem] p-5 sm:p-8 md:p-12 backdrop-blur-xl"
+            className="lg:col-span-8 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-4xl sm:rounded-[3rem] p-5 sm:p-8 md:p-12 backdrop-blur-xl"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
@@ -358,13 +381,13 @@ const Contact = () => {
                         exit={{ opacity: 0, y: -6 }}
                         className="flex items-center gap-3"
                       >
-                        <FaPaperPlane /> Beam Message To Email
+                        <FaPaperPlane /> Send Message
                       </motion.span>
                     )}
                   </AnimatePresence>
                 </motion.button>
                 <p className="mt-3 text-[10px] uppercase tracking-[0.16em] font-bold text-gray-400 text-center">
-                  Opens your email app with your message ready to send.
+                  Sends directly to my email. No email app needed.
                 </p>
               </div>
             </form>
